@@ -1,0 +1,13 @@
+parameters:
+  level: 3
+  bootstrapFiles:
+    - Build/phpstan-bootstrap.php
+  paths:
+    - Classes
+    - Configuration
+    - Tests
+    - ext_localconf.php
+  parallel:
+    maximumNumberOfProcesses: 4
+  tmpDir: .Build/phpstan
+  treatPhpDocTypesAsCertain: false

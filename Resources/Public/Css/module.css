@@ -1,0 +1,927 @@
+/*
+ * ns_t3al module UI — same chrome as ns_t3af (AI Foundation): shell, docheader tabs, page header,
+ * core cards, footer. Translate spreadsheet keeps its own cell semantics.
+ *
+ * Colors resolve in this order, so all three majors theme correctly:
+ *   1. TYPO3 tokens (--typo3-*, --module-*) — v13/v14 light, dark and auto
+ *   2. light-dark() fallbacks — v14 "auto" follows the OS via color-scheme, v12 (no color-scheme) stays light
+ *   3. [data-color-scheme=dark] / [data-bs-theme=dark] — explicit dark on v13+
+ * Do not use --typo3-component-* for surfaces: on v12 they follow prefers-color-scheme while the backend stays light.
+ */
+
+:root {
+	--t3al-primary: var(--typo3-link-color, var(--typo3-state-primary-color, #205eb5));
+
+	--t3al-bg: var(--typo3-surface-base, var(--bs-body-bg, light-dark(#fff, #1e1e1e)));
+	--t3al-bg-soft: var(--typo3-surface-container-low, light-dark(#f7f7f7, #292929));
+	--t3al-border: var(--typo3-border-color, var(--bs-border-color, light-dark(#d7d7d7, #4a4a4a)));
+
+	--t3al-text-900: var(--typo3-text-color-base, var(--bs-body-color, light-dark(#000, #fff)));
+	--t3al-text-500: var(--typo3-text-color-variant, var(--bs-secondary-color, light-dark(rgba(0, 0, 0, .65), hsla(0, 0%, 84%, .7))));
+
+	--t3al-radius: var(--typo3-component-border-radius, .375rem);
+	--t3al-shadow-menu: 0 6px 18px light-dark(rgba(0, 0, 0, .12), rgba(0, 0, 0, .45));
+	--t3al-module-inline: 1.25rem;
+
+	--t3al-loader-scrim: light-dark(rgba(255, 255, 255, .75), rgba(30, 30, 30, .75));
+
+	/* Spreadsheet cell semantics: same as source / source missing / translation missing */
+	--t3al-grid-focus: var(--typo3-input-focus-border-color, light-dark(#558b87, #6fb3ad));
+	--t3al-grid-stripe: light-dark(rgba(0, 0, 0, .025), rgba(255, 255, 255, .03));
+	--t3al-grid-hover: light-dark(rgba(0, 0, 0, .05), rgba(255, 255, 255, .06));
+	--t3al-cell-same: light-dark(#e3f2ef, rgba(36, 117, 84, .22));
+	--t3al-cell-nd: light-dark(#f6d5d5, rgba(209, 58, 46, .32));
+	--t3al-cell-nt: light-dark(#fff0f0, rgba(209, 58, 46, .14));
+
+	/* Soft action buttons (ns_t3af base.css palette) */
+	--t3al-soft-danger-bg: light-dark(oklch(0.971 0.013 17.38), rgba(239, 68, 68, .14));
+	--t3al-soft-danger-border: light-dark(oklch(0.885 0.062 18.334), rgba(239, 68, 68, .35));
+	--t3al-soft-danger-color: light-dark(oklch(0.577 0.245 27.325), #fca5a5);
+	--t3al-soft-success-bg: light-dark(oklch(0.982 0.018 155.826), rgba(34, 197, 94, .14));
+	--t3al-soft-success-border: light-dark(oklch(0.871 0.15 154.449), rgba(34, 197, 94, .35));
+	--t3al-soft-success-color: light-dark(oklch(0.527 0.154 150.069), #86efac);
+	--t3al-soft-primary-bg: light-dark(oklch(0.97 0.014 254.604), rgba(59, 130, 246, .16));
+	--t3al-soft-primary-border: light-dark(oklch(0.882 0.059 254.128), rgba(59, 130, 246, .38));
+	--t3al-soft-primary-color: light-dark(oklch(0.488 0.243 264.376), #93c5fd);
+}
+
+[data-color-scheme=dark],
+[data-bs-theme=dark] {
+	--t3al-bg: var(--typo3-surface-base, var(--bs-body-bg, #1e1e1e));
+	--t3al-bg-soft: var(--typo3-surface-container-low, #292929);
+	--t3al-border: var(--typo3-border-color, var(--bs-border-color, #4a4a4a));
+	--t3al-text-900: var(--typo3-text-color-base, var(--bs-body-color, #fff));
+	--t3al-text-500: var(--typo3-text-color-variant, var(--bs-secondary-color, hsla(0, 0%, 84%, .7)));
+	--t3al-shadow-menu: 0 6px 18px rgba(0, 0, 0, .45);
+	--t3al-loader-scrim: rgba(30, 30, 30, .75);
+	--t3al-grid-stripe: rgba(255, 255, 255, .03);
+	--t3al-grid-hover: rgba(255, 255, 255, .06);
+	--t3al-cell-same: rgba(36, 117, 84, .22);
+	--t3al-cell-nd: rgba(209, 58, 46, .32);
+	--t3al-cell-nt: rgba(209, 58, 46, .14);
+	--t3al-soft-danger-bg: rgba(239, 68, 68, .14);
+	--t3al-soft-danger-border: rgba(239, 68, 68, .35);
+	--t3al-soft-danger-color: #fca5a5;
+	--t3al-soft-success-bg: rgba(34, 197, 94, .14);
+	--t3al-soft-success-border: rgba(34, 197, 94, .35);
+	--t3al-soft-success-color: #86efac;
+	--t3al-soft-primary-bg: rgba(59, 130, 246, .16);
+	--t3al-soft-primary-border: rgba(59, 130, 246, .38);
+	--t3al-soft-primary-color: #93c5fd;
+}
+
+/* ----- Module shell (as ns_t3af .aiu-module-shell) -----
+ * v14 core .module is a 2-row grid (docheader + body) without a footer track;
+ * a flex column stacks docheader / body / footer the same way on v12–v14.
+ */
+
+.ns-t3al-module-shell.module {
+	display: flex !important;
+	flex-direction: column;
+	grid-template-areas: unset !important;
+	grid-template-rows: unset !important;
+	grid-template-columns: unset !important;
+	min-height: 100%;
+	width: 100%;
+}
+
+body > .ns-t3al-module-shell.module {
+	min-height: 100dvh;
+}
+
+.ns-t3al-module-shell.module > .module-docheader {
+	flex: 0 0 auto;
+	grid-area: unset !important;
+	order: 1;
+	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	background-color: var(--module-docheader-bg, var(--typo3-surface-container-lowest, light-dark(#fff, #1b1b1b)));
+}
+
+.ns-t3al-module-shell.module > .module-body {
+	flex: 1 1 auto;
+	grid-area: unset !important;
+	order: 2;
+	width: 100%;
+}
+
+.ns-t3al-module-shell .module-body-container {
+	max-width: none;
+	width: 100%;
+}
+
+/* ----- Docheader tabs + Guide (as ns_t3af .aiu-module-docheader) ----- */
+
+/* Core .module-docheader already pads to the module-body edge (as ns_t3aa); parent class outranks core .container-fluid */
+.ns-t3al-module-docheader .ns-t3al-module-docheader__inner {
+	--bs-gutter-x: 0;
+	padding-inline: 0;
+}
+
+.ns-t3al-module-docheader__row {
+	min-height: 2.75rem;
+}
+
+.ns-t3al-module-docheader__actions {
+	flex-shrink: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+
+.ns-t3al-module-docheader__actions .ns-t3al-guide-btn {
+	align-items: center;
+	border-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	display: inline-flex;
+	gap: .35rem;
+	height: 34px;
+	min-height: 34px;
+	padding: 8px 6px;
+}
+
+.ns-t3al-module-nav {
+	margin: 0;
+}
+
+.ns-t3al-module-nav-tabs {
+	flex-wrap: wrap;
+	gap: .25rem !important;
+	margin-bottom: 0;
+}
+
+.ns-t3al-module-nav-tabs .nav-link {
+	align-items: center;
+	border: 1px solid light-dark(#d7d7d7, #404040);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	display: inline-flex;
+	margin-bottom: -1px;
+	padding: 8px 8px 6px 8px;
+	text-decoration: none;
+}
+
+.ns-t3al-module-nav-tabs .nav-link.active {
+	color: var(--typo3-badge-primary-color, light-dark(#fff, #000));
+}
+
+.ns-t3al-module-nav-tabs .nav-link:not(.active):hover,
+.ns-t3al-module-nav-tabs .nav-link:not(.active):focus {
+	background: light-dark(#f2f2f2, #181818);
+	color: light-dark(#000, #fff);
+	text-decoration: none;
+}
+
+/* ----- Footer (as ns_t3af .aiu-module-footer) ----- */
+
+.ns-t3al-module-shell.module > .ns-t3al-module-footer {
+	align-self: stretch;
+	background: var(--module-bg, var(--t3al-bg));
+	border-top: 1px solid var(--module-docheader-border-color, var(--t3al-border));
+	flex: 0 0 auto;
+	grid-area: unset !important;
+	margin: 0;
+	max-width: 100%;
+	order: 3;
+	padding: .75rem var(--module-body-padding-x, 1.5rem);
+	width: 100%;
+}
+
+.ns-t3al-module-shell .ns-t3al-module-footer__inner {
+	width: 100%;
+}
+
+/* Plain text links: no core .btn hover background, border or transition */
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link,
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link:hover,
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link:focus,
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link:active {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: var(--typo3-text-color-link, var(--typo3-link-color, #205eb5));
+	font-size: inherit;
+	font-weight: 400;
+	line-height: inherit;
+	padding: 0;
+	text-decoration: none;
+	transform: none;
+	transition: none;
+	vertical-align: baseline;
+}
+
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link:hover,
+.ns-t3al-module-shell .ns-t3al-module-footer .btn-link:focus-visible {
+	text-decoration: underline;
+}
+
+.ns-t3al-module-shell .ns-t3al-module-footer .footer-links {
+	gap: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ns-t3al-module-shell .ns-t3al-module-footer .footer-links li {
+	align-items: center;
+	display: inline-flex;
+	padding-left: 20px;
+	position: relative;
+}
+
+.ns-t3al-module-shell .ns-t3al-module-footer .footer-links li:not(:first-child)::before {
+	background-color: var(--typo3-component-border-color, var(--t3al-border));
+	content: "";
+	height: 80%;
+	left: 10px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1px;
+}
+
+@media (max-width: 767.98px) {
+	.ns-t3al-module-footer__inner {
+		align-items: flex-start !important;
+		flex-direction: column;
+	}
+}
+
+/* ----- Page header (as ns_t3af .aiu-tab-page-header) ----- */
+
+.ns-t3al-module {
+	color: var(--t3al-text-900);
+	display: block;
+	width: 100%;
+}
+
+.ns-t3al-page-header {
+	align-items: center;
+	column-gap: 1rem;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	margin-bottom: .75rem;
+	row-gap: .5rem;
+}
+
+.ns-t3al-page-header__main {
+	min-width: 0;
+}
+
+.ns-t3al-page-header h1 {
+	color: var(--t3al-text-900);
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 1.2;
+	margin: 0;
+}
+
+.ns-t3al-page-header p {
+	font-size: .75rem;
+	margin: .25rem 0 0;
+}
+
+.ns-t3al-page-header__aside {
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* Parent class outranks core .badge, which loads after this file */
+.ns-t3al-page-header .ns-t3al-page-header__badge {
+	font-family: var(--typo3-font-family-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+	font-size: .9375rem;
+	line-height: 1.25;
+	padding: .4em .85em;
+}
+
+@media (max-width: 767.98px) {
+	.ns-t3al-page-header {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ns-t3al-page-header__aside {
+		justify-content: flex-start;
+	}
+}
+
+.ns-t3al-module .text-variant {
+	color: var(--t3al-text-500);
+}
+
+.ns-t3al-module .badge.badge-primary {
+	background-color: var(--typo3-badge-primary-bg, light-dark(#e8f0fa, #1f2a3a));
+	border: 1px solid var(--typo3-badge-primary-border-color, light-dark(#b9cfee, #34507a));
+	color: var(--typo3-badge-primary-color, var(--t3al-primary));
+}
+
+/* Soft action buttons, as ns_t3af .aiu-module-page .btn-danger */
+.ns-t3al-module .btn.btn-danger {
+	background-color: var(--t3al-soft-danger-bg);
+	border-color: var(--t3al-soft-danger-border);
+	color: var(--t3al-soft-danger-color);
+}
+
+.ns-t3al-module .btn.btn-success {
+	background-color: var(--t3al-soft-success-bg);
+	border-color: var(--t3al-soft-success-border);
+	color: var(--t3al-soft-success-color);
+}
+
+.ns-t3al-module .btn.btn-info {
+	background-color: var(--t3al-soft-primary-bg);
+	border-color: var(--t3al-soft-primary-border);
+	color: var(--t3al-soft-primary-color);
+}
+
+.ns-t3al-module .btn.btn-danger:hover,
+.ns-t3al-module .btn.btn-success:hover,
+.ns-t3al-module .btn.btn-info:hover {
+	background-color: transparent;
+}
+
+/* ----- Cards ----- */
+
+.ns-t3al-module .ns-t3al-card {
+	margin-bottom: 1rem;
+}
+
+.ns-t3al-module .ns-t3al-card > .card-header {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.ns-t3al-module .ns-t3al-card .card-title {
+	font-size: 15px;
+	line-height: 1.2;
+	margin: 0;
+}
+
+.ns-t3al-module .form-label {
+	font-size: .75rem;
+	font-weight: 700;
+	margin-bottom: .25rem;
+}
+
+/* ----- Filter (extension type, extension, file, languages) ----- */
+
+.ns-t3al-module .ns-t3al-filter {
+	margin: 0;
+}
+
+/* Combobox menus must escape the filter card (core .card clips overflow) */
+.ns-t3al-module .ns-t3al-filter .card,
+.ns-t3al-module .ns-t3al-filter .card-body {
+	overflow: visible;
+	position: relative;
+	z-index: 3;
+}
+
+.ns-t3al-module .ns-t3al-ext-type-filter {
+	display: inline-flex;
+}
+
+.ns-t3al-module .ns-t3al-filter-select,
+.ns-t3al-module .ns-t3al-file-select .form-select {
+	margin-bottom: 0;
+	width: 100%;
+}
+
+/* Searchable combobox (extension and language picker) */
+.ns-t3al-module .ns-t3al-combobox {
+	position: relative;
+}
+
+.ns-t3al-module .ns-t3al-combobox__native {
+	border: 0 !important;
+	clip: rect(0, 0, 0, 0) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	width: 1px !important;
+}
+
+.ns-t3al-module .ns-t3al-combobox__toggle {
+	align-items: center;
+	display: inline-flex;
+	justify-content: center;
+	min-width: 2.5rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox.is-open .ns-t3al-combobox__input,
+.ns-t3al-module .ns-t3al-combobox.is-open .ns-t3al-combobox__toggle {
+	border-color: var(--typo3-input-focus-border-color, light-dark(#0078e6, #5c9fd8));
+	box-shadow: 0 0 0 .125rem var(--typo3-input-focus-box-shadow-color, light-dark(rgba(0, 120, 230, .25), rgba(92, 159, 216, .35)));
+	z-index: 2;
+}
+
+.ns-t3al-module .ns-t3al-combobox__menu {
+	background: var(--t3al-bg);
+	border: 1px solid var(--t3al-border);
+	border-radius: var(--t3al-radius);
+	box-shadow: var(--t3al-shadow-menu);
+	left: 0;
+	max-height: 260px;
+	overflow: auto;
+	position: absolute;
+	right: 0;
+	top: calc(100% + 2px);
+	z-index: 30;
+}
+
+.ns-t3al-module .ns-t3al-combobox__group {
+	background: var(--t3al-bg-soft);
+	border-top: 1px solid var(--t3al-border);
+	color: var(--t3al-text-500);
+	font-size: .75rem;
+	font-weight: 600;
+	letter-spacing: .02em;
+	padding: .4rem .75rem .2rem;
+	position: sticky;
+	text-transform: uppercase;
+	top: 0;
+	z-index: 1;
+}
+
+.ns-t3al-module .ns-t3al-combobox__group:first-child {
+	border-top: 0;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option {
+	background: transparent;
+	border: 0;
+	color: var(--t3al-text-900);
+	cursor: pointer;
+	display: block;
+	padding: .55rem .75rem;
+	text-align: left;
+	width: 100%;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option--multi {
+	align-items: flex-start;
+	display: flex;
+	gap: .55rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option:hover,
+.ns-t3al-module .ns-t3al-combobox__option.is-active {
+	background: var(--typo3-state-default-hover-bg, light-dark(#f2f2f2, #333));
+}
+
+.ns-t3al-module .ns-t3al-combobox__option.is-selected {
+	background: var(--typo3-state-default-bg, light-dark(#ebebeb, #2b2b2b));
+	font-weight: 600;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option-title {
+	display: block;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option-key {
+	color: var(--t3al-text-500);
+	display: block;
+	font-size: .8rem;
+	font-weight: 400;
+	line-height: 1.3;
+	margin-top: .1rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.ns-t3al-module .ns-t3al-combobox__check {
+	background: var(--t3al-bg);
+	border: 1px solid var(--t3al-border);
+	border-radius: .2rem;
+	flex-shrink: 0;
+	height: 1rem;
+	margin-top: .15rem;
+	position: relative;
+	width: 1rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__option.is-selected .ns-t3al-combobox__check {
+	background: var(--typo3-state-primary-bg, var(--t3al-primary));
+	border-color: var(--typo3-state-primary-border-color, var(--t3al-primary));
+}
+
+.ns-t3al-module .ns-t3al-combobox__option.is-selected .ns-t3al-combobox__check::after {
+	border: solid var(--typo3-state-primary-color, #fff);
+	border-width: 0 2px 2px 0;
+	content: '';
+	height: .55rem;
+	left: .28rem;
+	position: absolute;
+	top: .05rem;
+	transform: rotate(45deg);
+	width: .28rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__empty {
+	color: var(--t3al-text-500);
+	padding: .75rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .35rem;
+	margin-top: .5rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__chip {
+	align-items: center;
+	background: var(--typo3-state-default-bg, light-dark(#ebebeb, #2b2b2b));
+	border: 1px solid var(--t3al-border);
+	border-radius: 999px;
+	color: var(--t3al-text-900);
+	cursor: pointer;
+	display: inline-flex;
+	font-size: .75rem;
+	gap: .35rem;
+	line-height: 1.2;
+	max-width: 100%;
+	padding: .25rem .5rem;
+}
+
+.ns-t3al-module .ns-t3al-combobox__chip:hover {
+	background: var(--typo3-state-default-hover-bg, light-dark(#dedede, #333));
+}
+
+.ns-t3al-module .ns-t3al-combobox__chip-label {
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ns-t3al-module .ns-t3al-combobox__chip-key {
+	color: var(--t3al-text-500);
+	font-weight: 400;
+}
+
+.ns-t3al-module .ns-t3al-combobox__chip-remove {
+	font-size: .95rem;
+	line-height: 1;
+	opacity: .7;
+}
+
+/* ----- Editor card: actions header, AI toolbar, grid ----- */
+
+.ns-t3al-module .ns-t3al-editor {
+	overflow: hidden;
+}
+
+.ns-t3al-module .ns-t3al-grid-actions {
+	align-items: center;
+	border-bottom: 1px solid var(--t3al-border);
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem .75rem;
+	padding: .75rem 1rem;
+}
+
+.ns-t3al-module .ns-t3al-editor-actions,
+.ns-t3al-module .ns-t3al-export-actions {
+	flex-wrap: nowrap;
+}
+
+.ns-t3al-module .ns-t3al-grid-actions .btn {
+	align-items: center;
+	display: inline-flex;
+	gap: .35rem;
+	white-space: nowrap;
+}
+
+.ns-t3al-module .ns-t3al-import-csv {
+	flex: 0 1 38rem;
+	width: auto;
+}
+
+/* Core's file-selector margins assume 8px input padding while the input has 6px, leaving a white strip */
+.ns-t3al-module .ns-t3al-import-csv .form-control {
+	overflow: hidden;
+	padding-block: 0;
+	padding-inline-start: 0;
+}
+
+.ns-t3al-module .ns-t3al-import-csv .form-control::file-selector-button {
+	height: 100%;
+	margin: 0 .75rem 0 0;
+	padding-block: 0;
+}
+.ns-t3al-module .ns-t3al-grid-actions__end {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-left: auto;
+}
+
+.ns-t3al-module .ns-t3al-toolbar {
+	align-items: flex-end;
+	border-bottom: 1px solid var(--t3al-border);
+	display: flex;
+	flex-wrap: wrap;
+	gap: .75rem 1.5rem;
+	padding: .75rem 1rem;
+}
+
+.ns-t3al-module .ns-t3al-api-provider .form-label {
+	display: block;
+}
+
+.ns-t3al-module .ns-t3al-api-provider__controls {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.ns-t3al-module .ns-t3al-toolbar .btn {
+	align-items: center;
+	display: inline-flex;
+}
+
+.ns-t3al-module .ns-t3al-toolbar .text-api-model-collapse.show {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+}
+
+.ns-t3al-module .ns-t3al-toolbar .text-api-model-collapse:not(.show) {
+	display: none;
+}
+
+.ns-t3al-module .ns-t3al-toolbar .text-warning {
+	color: var(--typo3-text-color-warning, light-dark(#b45309, #fbbf24)) !important;
+	font-size: .8125rem;
+}
+
+.ns-t3al-module .ns-t3al-crowdin-project {
+	margin-left: auto;
+}
+
+.ns-t3al-module .ns-t3al-crowdin-project .form-label {
+	display: block;
+	white-space: nowrap;
+}
+
+.ns-t3al-module .ns-t3al-toolbar .ns-t3al-project-id {
+	margin-bottom: 0;
+	width: 12rem;
+}
+
+/* ----- Translate spreadsheet (flush inside the editor card) ----- */
+
+.ns-t3al-module .translate-table {
+	background: transparent;
+	border-collapse: separate;
+	border-spacing: 0;
+	display: table;
+	margin: 0;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.ns-t3al-module .translate-row {
+	display: table-row;
+}
+
+.ns-t3al-module .translate-row.over {
+	box-shadow: inset 0 2px 0 var(--t3al-grid-focus);
+}
+
+/* Header is the first row, so odd children are the 2nd, 4th, … label rows */
+.ns-t3al-module .translate-row:not(.header):nth-child(odd) {
+	background-color: var(--t3al-grid-stripe);
+}
+
+.ns-t3al-module .translate-row:not(.header):hover {
+	background-color: var(--t3al-grid-hover);
+}
+
+.ns-t3al-module .translate-row.header {
+	color: var(--t3al-text-900);
+	font-size: .75rem;
+	font-weight: 700;
+}
+
+.ns-t3al-module .translate-row.header > div {
+	background: var(--t3al-bg-soft);
+	padding: 8px;
+	vertical-align: middle;
+}
+
+.ns-t3al-module .translate-row > div {
+	border: 0;
+	border-bottom: 1px solid var(--t3al-border);
+	border-right: 1px solid var(--t3al-border);
+	box-sizing: border-box;
+	display: table-cell;
+	line-height: 1.35;
+	overflow: hidden;
+	padding: 0;
+	vertical-align: top;
+}
+
+.ns-t3al-module .translate-row > div:last-child {
+	border-right: 0;
+}
+
+.ns-t3al-module .translate-row:last-child > div {
+	border-bottom: 0;
+}
+
+.ns-t3al-module .translate-row > div:not(.ns-t3al-col-actions):focus-within {
+	box-shadow: inset 0 0 0 1.5px var(--t3al-grid-focus);
+}
+
+.ns-t3al-module .translate-row.is-new > div:not(.ns-t3al-col-actions) {
+	background-color: var(--t3al-soft-success-bg);
+}
+
+.ns-t3al-module .translate-row > .ns-t3al-col-key {
+	width: 18%;
+}
+
+.ns-t3al-module .translate-row > .ns-t3al-col-default,
+.ns-t3al-module .translate-row > .ns-t3al-col-lang {
+	width: auto;
+}
+
+.ns-t3al-module .translate-row > .same {
+	background-color: var(--t3al-cell-same);
+}
+
+.ns-t3al-module .translate-row > .nd {
+	background-color: var(--t3al-cell-nd);
+}
+
+.ns-t3al-module .translate-row > .nt {
+	background-color: var(--t3al-cell-nt);
+}
+
+/* Neutralize Bootstrap .form-control so cells share one box model with the header */
+.ns-t3al-module .translate-row input,
+.ns-t3al-module .translate-row textarea,
+.ns-t3al-module .translate-row .form-control {
+	background-color: transparent !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	box-sizing: border-box;
+	color: var(--t3al-text-900);
+	display: block;
+	height: auto;
+	line-height: 1.35;
+	margin: 0;
+	max-width: 100%;
+	min-height: 0;
+	outline: none;
+	padding: 6px 8px;
+	width: 100%;
+}
+
+.ns-t3al-module .translate-row input[readonly],
+.ns-t3al-module .translate-row textarea[readonly] {
+	color: var(--t3al-text-500);
+}
+
+/* Height follows the content (module-functionality.js autosizeGridTextarea) */
+.ns-t3al-module .translate-row textarea,
+.ns-t3al-module .translate-row textarea.form-control {
+	min-height: calc(1.35em + 12px);
+	overflow-y: hidden;
+	resize: none;
+}
+
+.ns-t3al-module .translate-row svg {
+	pointer-events: none;
+}
+
+.ns-t3al-module .translate-row > .ns-t3al-col-actions {
+	overflow: visible;
+	padding: 4px 8px;
+	vertical-align: middle;
+	width: 7.5rem;
+}
+
+.ns-t3al-module .ns-t3al-row-actions .btn {
+	align-items: center;
+	display: inline-flex;
+	padding: .15rem .35rem;
+}
+
+.ns-t3al-module .ns-t3al-row-actions .move {
+	cursor: grab;
+}
+
+/* ----- Search ----- */
+
+.ns-t3al-module .ns-t3al-search-form {
+	margin: 0;
+}
+
+.ns-t3al-module .ns-t3al-search-form .btn {
+	align-items: center;
+	display: inline-flex;
+	gap: .35rem;
+}
+
+.ns-t3al-module .ns-t3al-search-results .list-group-item {
+	background: transparent;
+	border-color: var(--t3al-border);
+}
+
+.ns-t3al-module .ns-t3al-search-results a {
+	text-decoration: none;
+	word-break: break-word;
+}
+
+.ns-t3al-module .ns-t3al-search-results a .t3js-icon {
+	margin-right: .35rem;
+	vertical-align: text-bottom;
+}
+
+.ns-t3al-module .ns-t3al-search-results a:hover {
+	text-decoration: underline;
+}
+
+/* ----- Logs ----- */
+
+.ns-t3al-module .ns-t3al-logs-toolbar {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-bottom: .75rem;
+}
+
+.ns-t3al-module .panel {
+	border-radius: var(--typo3-card-border-radius, var(--t3al-radius));
+	overflow: hidden;
+}
+
+.ns-t3al-module .panel + .panel {
+	margin-top: .75rem !important;
+}
+
+.ns-t3al-module .panel-heading .panel-title {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	font-size: .875rem;
+	gap: .5rem;
+	margin: 0;
+}
+
+.ns-t3al-module .toggle-all-button + .expand-all-button .icon-actions-toggle-on,
+.ns-t3al-module .toggle-all-button:checked + .expand-all-button .icon-actions-toggle-off {
+	display: none;
+}
+
+.ns-t3al-module .toggle-all-button:checked + .expand-all-button .icon-actions-toggle-on {
+	display: inline-block;
+}
+
+/* ----- Loader: core <typo3-backend-spinner> over the module ----- */
+
+#ns-t3al__loader.ns-t3al-module-loader {
+	align-items: center;
+	background: var(--t3al-loader-scrim);
+	display: none;
+	inset: 0;
+	justify-content: center;
+	position: fixed;
+	z-index: 10050;
+}
+
+#ns-t3al__loader.ns-t3al-module-loader.ns-show-overlay {
+	display: flex;
+}
+
+#ns-t3al__loader .ns-t3al-loader-content {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+
+#ns-t3al__loader .loader-text {
+	color: var(--t3al-text-900);
+	font-size: .875rem;
+}

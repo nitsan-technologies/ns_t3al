@@ -1,0 +1,88 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<div class="ns-t3al-toolbar" data-ns-t3al-api-model data-ns-t3al-api-model-default="{apiModelDefault}">
+	<input type="hidden" name="selectedApiModel" value="{apiModelDefault}" data-ns-t3al-selected-api-model />
+	<div class="ns-t3al-api-provider">
+		<span class="form-label" id="ns-t3al-api-model-label"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:toolbar.provider" /></span>
+		<div class="ns-t3al-api-provider__controls">
+			<div class="ns-t3al-api-model-tabs btn-group" role="group" aria-labelledby="ns-t3al-api-model-label">
+				<input type="radio" class="btn-check" name="apiModel" id="openaiFormFields" autocomplete="off" value="openai"
+					{f:if(condition: apiModelIs.openai, then: 'checked="checked"')}
+					data-has-key="{f:if(condition: '{extSettings.openaiApiKey}', then: '1', else: '0')}">
+				<label class="btn btn-default {f:if(condition: apiModelIs.openai, then: 'active')}" for="openaiFormFields"
+					data-ns-t3al-api-model-target="collapseopenai"><f:translate key="setting.openai" extensionName="ns_t3al" /></label>
+
+				<input type="radio" class="btn-check" name="apiModel" id="geminiFormFields" autocomplete="off" value="gemini"
+					{f:if(condition: apiModelIs.gemini, then: 'checked="checked"')}
+					data-has-key="{f:if(condition: '{extSettings.geminiApiKey}', then: '1', else: '0')}">
+				<label class="btn btn-default {f:if(condition: apiModelIs.gemini, then: 'active')}" for="geminiFormFields"
+					data-ns-t3al-api-model-target="collapsegemini"><f:translate key="setting.gemini" extensionName="ns_t3al" /></label>
+
+				<input type="radio" class="btn-check" name="apiModel" id="deepLFormFields" autocomplete="off" value="deepl"
+					{f:if(condition: apiModelIs.deepl, then: 'checked="checked"')}
+					data-has-key="{f:if(condition: '{extSettings.deeplApiKey}', then: '1', else: '0')}">
+				<label class="btn btn-default {f:if(condition: apiModelIs.deepl, then: 'active')}" for="deepLFormFields"
+					data-ns-t3al-api-model-target="collapsedeepl"><f:translate key="setting.deepl" extensionName="ns_t3al" /></label>
+
+				<input type="radio" class="btn-check" name="apiModel" id="googleFormFields" autocomplete="off" value="google"
+					{f:if(condition: apiModelIs.google, then: 'checked="checked"')}
+					data-has-key="{f:if(condition: '{extSettings.googleApiKey}', then: '1', else: '0')}">
+				<label class="btn btn-default {f:if(condition: apiModelIs.google, then: 'active')}" for="googleFormFields"
+					data-ns-t3al-api-model-target="collapsegoogle"><f:translate key="setting.google-translate" extensionName="ns_t3al" /></label>
+			</div>
+
+			<div class="collapse text-api-model-collapse {f:if(condition: apiModelIs.openai, then: 'show')}" id="collapseopenai">
+				<f:if condition="{extSettings.openaiApiKey}">
+					<f:then>
+						<input type="radio" class="btn-check text-api-model" name="models[openai]" id="gpt-5-6-terraFormFields" value="gpt-5.6-terra" checked="checked">
+						<label class="btn btn-default" for="gpt-5-6-terraFormFields">gpt-5.6-terra</label>
+						<input type="radio" class="btn-check text-api-model" name="models[openai]" id="gpt-5-6-lunaFormFields" value="gpt-5.6-luna">
+						<label class="btn btn-default" for="gpt-5-6-lunaFormFields">gpt-5.6-luna</label>
+						<input type="radio" class="btn-check text-api-model" name="models[openai]" id="gpt-5-6-solFormFields" value="gpt-5.6-sol">
+						<label class="btn btn-default" for="gpt-5-6-solFormFields">gpt-5.6-sol</label>
+						<input type="radio" class="btn-check text-api-model" name="models[openai]" id="gpt-4oFormFields" value="gpt-4o">
+						<label class="btn btn-default" for="gpt-4oFormFields">gpt-4o</label>
+					</f:then>
+					<f:else>
+						<span class="text-warning"><f:translate key="setting.openai.key_not_availble" extensionName="ns_t3al"/></span>
+					</f:else>
+				</f:if>
+			</div>
+			<div class="collapse text-api-model-collapse {f:if(condition: apiModelIs.gemini, then: 'show')}" id="collapsegemini">
+				<f:if condition="{extSettings.geminiApiKey}">
+					<f:then>
+						<input type="radio" class="btn-check text-api-model" name="models[gemini]" id="gemini-2.5-flashFormFields" value="gemini-2.5-flash" checked="checked">
+						<label class="btn btn-default" for="gemini-2.5-flashFormFields">gemini-2.5-flash</label>
+						<input type="radio" class="btn-check text-api-model" name="models[gemini]" id="gemini-2.5-flash-liteFormFields" value="gemini-2.5-flash-lite">
+						<label class="btn btn-default" for="gemini-2.5-flash-liteFormFields">gemini-2.5-flash-lite</label>
+						<input type="radio" class="btn-check text-api-model" name="models[gemini]" id="gemini-3.6-flashFormFields" value="gemini-3.6-flash">
+						<label class="btn btn-default" for="gemini-3.6-flashFormFields">gemini-3.6-flash</label>
+					</f:then>
+					<f:else>
+						<span class="text-warning"><f:translate key="setting.gemini.key_not_availble" extensionName="ns_t3al"/></span>
+					</f:else>
+				</f:if>
+			</div>
+			<div class="collapse text-api-model-collapse {f:if(condition: apiModelIs.deepl, then: 'show')}" id="collapsedeepl">
+				<f:if condition="!{extSettings.deeplApiKey}">
+					<span class="text-warning"><f:translate key="setting.deepl.key_not_availble" extensionName="ns_t3al"/></span>
+				</f:if>
+			</div>
+			<div class="collapse text-api-model-collapse {f:if(condition: apiModelIs.google, then: 'show')}" id="collapsegoogle">
+				<f:if condition="!{extSettings.googleApiKey}">
+					<span class="text-warning"><f:translate key="setting.google-translate.key_not_availble" extensionName="ns_t3al"/></span>
+				</f:if>
+			</div>
+		</div>
+	</div>
+
+	<f:if condition="{extensionType} == 'typo3-cms-framework'">
+		<div class="ns-t3al-crowdin-project">
+			<label class="form-label" for="projectId"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:toolbar.crowdinId" /></label>
+			<f:form.textfield class="form-control ns-t3al-project-id" type="number" name="projectId" id="projectId" value="{projectId}" />
+		</div>
+	</f:if>
+</div>
+</html>

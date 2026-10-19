@@ -1,0 +1,74 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+	<div class="ns-t3al-module">
+		<div id="ns-t3al__loader" class="ns-t3al-module-loader"
+			data-loader-default="{f:translate(key:'loader_text', extensionName:'ns_t3al')}"
+			data-loader-translate="{f:translate(key:'loader_text_translate', extensionName:'ns_t3al')}">
+			<div class="ns-t3al-loader-content" role="status">
+				<typo3-backend-spinner size="large"></typo3-backend-spinner>
+				<span class="loader-text"><f:translate key="loader_text" extensionName="ns_t3al" /></span>
+			</div>
+		</div>
+		<f:flashMessages />
+		<f:variable name="heading"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.list" /></f:variable>
+		<f:variable name="intro"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.list.intro" /></f:variable>
+		<f:render partial="Module/PageHeader" arguments="{heading: heading, intro: intro, badge: extkey}" />
+
+		<f:form action="list" controller="Module" class="ns-t3al-filter" id="ns-t3al-filter">
+			<f:form.hidden name="projectId" value="{projectId}" />
+			<f:form.hidden name="apiModel" value="{apiModelDefault}" />
+			<div class="card ns-t3al-card">
+				<div class="card-body">
+					<f:render partial="Module/Filter" arguments="{_all}" />
+				</div>
+			</div>
+		</f:form>
+
+		<f:if condition="{extkey} && {modifyKeys}">
+			<f:form id="translate_create_file" action="createFile" controller="Module">
+				<f:form.hidden name="extensionKey" value="{extkey}" />
+			</f:form>
+		</f:if>
+
+		<f:if condition="{extkey} && {file}">
+			<f:form action="save" controller="Module" id="translate_labels" class="card ns-t3al-card ns-t3al-editor ns-t3al-module-form"
+				additionalAttributes="{spellcheck:'false',autocomplete:'off',data-translate-uri:translateUri,data-save-uri:saveUri,data-default:defaultLangKey}">
+				<f:form.hidden name="extensionKey" value="{extkey}" />
+				<f:form.hidden name="extkey" value="{extkey}" />
+				<f:form.hidden name="file" value="{file}" />
+				<f:form.hidden name="extensionType" value="{extensionType}" />
+				<f:for each="{langKeys}" as="langKey" iteration="iter">
+					<f:form.hidden name="langKeys[{iter.index}]" value="{langKey}" />
+				</f:for>
+				<f:render partial="Module/Toolbar" arguments="{_all}" />
+				<f:render partial="Module/GridActions" arguments="{_all}" />
+				<f:render partial="Module/LabelGrid" arguments="{_all}" />
+			</f:form>
+
+			<f:form id="ns-t3al-export-csv" action="exportCsv" controller="Module" method="post">
+				<f:form.hidden name="extensionKey" value="{extkey}" />
+				<f:form.hidden name="file" value="{file}" />
+				<f:for each="{langKeys}" as="langKey" iteration="iter">
+					<f:form.hidden name="langKeys[{iter.index}]" value="{langKey}" />
+				</f:for>
+			</f:form>
+
+			<f:if condition="{modifyKeys}">
+				<f:form id="translate_import" action="importCsv" controller="Module" enctype="multipart/form-data">
+					<f:form.hidden name="extensionKey" value="{extkey}" />
+					<f:form.hidden name="file" value="{file}" />
+					<f:for each="{langKeys}" as="langKey" iteration="iter">
+						<f:form.hidden name="langKeys[{iter.index}]" value="{langKey}" />
+					</f:for>
+				</f:form>
+			</f:if>
+		</f:if>
+	</div>
+</f:section>
+</html>

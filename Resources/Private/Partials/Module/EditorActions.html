@@ -1,0 +1,70 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<f:section name="Main">
+	<div class="ns-t3al-editor-actions btn-group" role="group" aria-label="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:toolbar.actions')}">
+		<button type="submit"
+			class="btn btn-primary btn-sm"
+			form="translate_labels"
+			name="translate_ai"
+			value="yes"
+			title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.translate')}">
+			<core:icon identifier="actions-play" size="small" />
+			<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.translate" />
+		</button>
+		<button type="submit"
+			class="btn btn-sm {f:if(condition: formChanged, then: 'btn-success', else: 'btn-default')}"
+			form="translate_labels"
+			name="fileLocation"
+			value="local"
+			title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.saveLocal')}"
+			{f:if(condition: disableSaveButton, then: 'disabled="disabled"')}>
+			<core:icon identifier="actions-document-save" size="small" />
+			<span class="visually-hidden"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.saveLocal" /></span>
+		</button>
+		<f:if condition="{extensionType} == 'typo3-cms-framework'">
+			<button type="submit"
+				class="btn btn-info btn-sm ns-t3al-crowdin-save"
+				form="translate_labels"
+				name="fileLocation"
+				value="crowdin"
+				title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.saveCrowdin')}"
+				{f:if(condition: disableSaveButton, then: 'disabled="disabled"')}>
+				<core:icon identifier="actions-document-save" size="small" />
+				<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.saveCrowdin" />
+			</button>
+		</f:if>
+		<a class="btn btn-default btn-sm"
+			href="{reloadUri}"
+			title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.reload')}">
+			<core:icon identifier="actions-refresh" size="small" />
+			<span class="visually-hidden"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.reload" /></span>
+		</a>
+	</div>
+</f:section>
+
+<f:section name="Export">
+	<div class="ns-t3al-export-actions btn-group" role="group">
+		<button type="submit"
+			class="btn btn-success btn-sm"
+			form="ns-t3al-export-csv"
+			name="export_csv"
+			value="yes"
+			title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.exportCsv')}">
+			<core:icon identifier="actions-download" size="small" />
+			<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.exportCsv" />
+		</button>
+		<f:if condition="{exportZipUri}">
+			<a class="btn btn-success btn-sm"
+				href="{exportZipUri}"
+				data-ns-t3al-download="1"
+				title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.exportZip.title')}">
+				<core:icon identifier="actions-system-extension-download" size="small" />
+				<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:button.exportZip" />
+			</a>
+		</f:if>
+	</div>
+</f:section>
+</html>

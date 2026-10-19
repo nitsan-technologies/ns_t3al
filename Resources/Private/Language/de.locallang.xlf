@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:ns_t3al/Resources/Private/Language/locallang.xlf" date="2025-04-10T14:28:38Z" product-name="ns_t3al">
+		<header/>
+		<body>
+			<trans-unit id="translation.module.translate.targetLanguage">
+				<source>Choose the target language</source>
+				<target>Wählen Sie die Zielsprache</target>
+			</trans-unit>
+			<trans-unit id="translation.module.searchExtension">
+				<source>Search by name or extension key...</source>
+				<target>Nach Name oder Extension-Key suchen...</target>
+			</trans-unit>
+			<trans-unit id="translation.module.searchLanguage">
+				<source>Search by name or language code...</source>
+				<target>Nach Name oder Sprachcode suchen...</target>
+			</trans-unit>
+			<trans-unit id="translation.module.searchNoMatch">
+				<source>No matches found.</source>
+				<target>Keine Treffer gefunden.</target>
+			</trans-unit>
+			<trans-unit id="translation.module.languagesSelected">
+				<source>%s languages selected</source>
+				<target>%s Sprachen ausgewählt</target>
+			</trans-unit>
+			<trans-unit id="translation.fetchingDataSuccessful.title">
+				<source>Data successfully retrieved.</source>
+				<target>Erfolgreich abgeholte Daten</target>
+			</trans-unit>
+			<trans-unit id="translation.fetchingDataSuccessful.message">
+				<source>The missing translations were filled in. Review them and click "Save" to write them to the language files.</source>
+				<target>Die fehlenden Übersetzungen wurden ergänzt. Bitte prüfen und anschließend speichern, um sie in die Sprachdateien zu schreiben.</target>
+			</trans-unit>
+			<trans-unit id="translation.noTranslationsNeeded.title">
+				<source>Nothing to translate</source>
+				<target>Nichts zu übersetzen</target>
+			</trans-unit>
+			<trans-unit id="translation.noTranslationsNeeded.message">
+				<source>Every label already has a translation in the selected languages. Translate only fills empty fields.</source>
+				<target>Alle Labels sind in den ausgewählten Sprachen bereits übersetzt. Die KI-Übersetzung füllt nur leere Felder.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.local.success.message">
+				<source>Translation file saved successfully.</source>
+				<target>Übersetzungsdatei erfolgreich gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.local.success.title">
+				<source>Translation Success</source>
+				<target>Übersetzung gespeichert</target>
+			</trans-unit>
+			<trans-unit id="logs.insert.error.title">
+				<source>Log could not be saved</source>
+				<target>Protokoll konnte nicht gespeichert werden</target>
+			</trans-unit>
+			<trans-unit id="logs.insert.error.message">
+				<source>The translation was saved, but writing the log entry failed. If the text contains emojis or special characters, ensure the database connection uses utf8mb4.</source>
+				<target>Die Übersetzung wurde gespeichert, aber der Protokolleintrag konnte nicht geschrieben werden. Wenn der Text Emojis oder Sonderzeichen enthält, muss die Datenbankverbindung utf8mb4 verwenden.</target>
+			</trans-unit>
+			<trans-unit id="translation.generation.error">
+				<source>An unexpected error occurred.</source>
+				<target>Ein unerwarteter Fehler ist aufgetreten.</target>
+			</trans-unit>
+			<trans-unit id="translation.provider.unreachable">
+				<source>The translation service could not be reached (timeout or network error). Please try again later.</source>
+				<target>Der Übersetzungsdienst ist nicht erreichbar (Zeitüberschreitung oder Netzwerkfehler). Bitte später erneut versuchen.</target>
+			</trans-unit>
+			<trans-unit id="translation.provider.server_error">
+				<source>The translation service is temporarily unavailable (HTTP %d). Please try again later.</source>
+				<target>Der Übersetzungsdienst ist vorübergehend nicht verfügbar (HTTP %d). Bitte später erneut versuchen.</target>
+			</trans-unit>
+			<trans-unit id="translation.provider.rejected">
+				<source>The translation service rejected the request (HTTP %d). Please check the API key, quota and model in the extension settings.</source>
+				<target>Der Übersetzungsdienst hat die Anfrage abgelehnt (HTTP %d). Bitte API-Schlüssel, Kontingent und Modell in den Extension-Einstellungen prüfen.</target>
+			</trans-unit>
+			<trans-unit id="translation.errorWritingTranslationFile.message">
+				<source>There was an issue while saving the translations.</source>
+				<target>Beim Speichern der Übersetzungen gab es ein Problem.</target>
+			</trans-unit>
+			<trans-unit id="translation.translationGenerationError.title">
+				<source>Error Occured</source>
+				<target>Fehler aufgetreten</target>
+			</trans-unit>
+			<trans-unit id="translation.responseMismatch.message">
+				<source>The translation service returned a response that does not match the requested labels (missing, extra or empty entries). Those labels were not translated to avoid assigning text to the wrong keys.</source>
+				<target>Der Übersetzungsdienst hat eine Antwort geliefert, die nicht zu den angeforderten Labels passt (fehlende, zusätzliche oder leere Einträge). Diese Labels wurden nicht übersetzt, damit kein Text dem falschen Schlüssel zugeordnet wird.</target>
+			</trans-unit>
+			<trans-unit id="translation.partialFailure.title">
+				<source>Some labels were not translated</source>
+				<target>Einige Labels wurden nicht übersetzt</target>
+			</trans-unit>
+			<trans-unit id="translation.partialFailure.message">
+				<source>%1$d of %2$d labels could not be translated and were left unchanged. Reason: %3$s</source>
+				<target>%1$d von %2$d Labels konnten nicht übersetzt werden und blieben unverändert. Grund: %3$s</target>
+			</trans-unit>
+			<trans-unit id="translation.file.no_content">
+				<source>No content available</source>
+				<target>Kein Inhalt verfügbar</target>
+			</trans-unit>
+			<trans-unit id="file.no_logs">
+				<source>Logs not found</source>
+				<target>Protokolle nicht gefunden</target>
+			</trans-unit>
+			<trans-unit id="file.no_logs.description">
+				<source>No logs are availble for the selected file</source>
+				<target>Für die ausgewählte Datei sind keine Protokolle verfügbar</target>
+			</trans-unit>
+			<trans-unit id="file.ToggleCollapse">
+				<source>Toggle Collapse</source>
+				<target>Ein-/Ausklappen</target>
+			</trans-unit>
+			<trans-unit id="setting.openai">
+				<source>OpenAI</source>
+				<target>OpenAI</target>
+			</trans-unit>
+			<trans-unit id="setting.gemini">
+				<source>Gemini</source>
+				<target>Gemini</target>
+			</trans-unit>
+			<trans-unit id="setting.deepl">
+				<source>DeepL</source>
+				<target>DeepL</target>
+			</trans-unit>
+			<trans-unit id="setting.google-translate">
+				<source>Google Translate</source>
+				<target>Google Übersetzen</target>
+			</trans-unit>
+			<trans-unit id="translation.deepL.error.unsupported_languages">
+				<source>Unsupported language</source>
+				<target>Nicht unterstützte Sprache.</target>
+			</trans-unit>
+			<trans-unit id="translation.deepL.unsupported_language.message">
+				<source>DeepL cannot translate into "%s". Please choose another AI provider for this language.</source>
+				<target>DeepL kann nicht in „%s“ übersetzen. Bitte wählen Sie für diese Sprache einen anderen KI-Anbieter.</target>
+			</trans-unit>
+			<trans-unit id="setting.openai.key_not_availble">
+				<source>OpenAI key is not available, Please Add OpenAI key in settings</source>
+				<target>OpenAI Schlüssel ist nicht verfügbar, bitte fügen Sie den OpenAI Schlüssel in den Einstellungen hinzu</target>
+			</trans-unit>
+			<trans-unit id="setting.gemini.key_not_availble">
+				<source>Gemini API key is not available, Please Add Gemini API key in settings</source>
+				<target>Gemini API Schlüssel ist nicht verfügbar, bitte fügen Sie den Gemini API Schlüssel in den Einstellungen hinzu</target>
+			</trans-unit>
+			<trans-unit id="setting.deepl.key_not_availble">
+				<source>DeepL API key is not available, Please Add DeepL  API key in settings</source>
+				<target>DeepL API-Schlüssel ist nicht verfügbar, bitte fügen Sie DeepL API-Schlüssel in den Einstellungen hinzu</target>
+			</trans-unit>
+			<trans-unit id="setting.google-translate.key_not_availble">
+				<source>Google API key is not available, Please Add Google API key in settings</source>
+				<target>Google API-Schlüssel ist nicht verfügbar, bitte fügen Sie den Google API-Schlüssel in den Einstellungen hinzu</target>
+			</trans-unit>
+			<trans-unit id="setting.api_key.none_configured">
+				<source>No AI provider API key is configured. Please add a key in settings.</source>
+				<target>Kein API-Schlüssel für einen KI-Anbieter konfiguriert. Bitte fügen Sie einen Schlüssel in den Einstellungen hinzu.</target>
+			</trans-unit>
+			<trans-unit id="api_key.missing">
+				<source>API key is missing</source>
+				<target>Der API-Schlüssel fehlt</target>
+			</trans-unit>
+			<trans-unit id="translation.module.translate.file">
+				<source>Select File</source>
+				<target> Datei auswählen </target>
+			</trans-unit>
+			<trans-unit id="form.ext">
+				<source>EXT</source>
+				<target>EXT</target>
+			</trans-unit>
+			<trans-unit id="button.saveLocal">
+				<source>Save</source>
+				<target>Speichern</target>
+			</trans-unit>
+			<trans-unit id="button.exportCsv">
+				<source>Export CSV</source>
+				<target>CSV exportieren</target>
+			</trans-unit>
+			<trans-unit id="modal.close">
+				<source>Close</source>
+				<target>Schließen</target>
+			</trans-unit>
+			<trans-unit id="translation.file.missing">
+				<source>Please check file the selected language file exists or not.</source>
+				<target>Bitte prüfen Sie, ob die ausgewählte Sprachdatei existiert oder nicht.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.success.title">
+				<source>Changes are applied at crowdin</source>
+				<target>Änderungen werden bei Crowdin angewendet</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.success.message">
+				<source>Your changes is updated at crowdin successfully</source>
+				<target>Ihre Änderungen wurden bei Crowdin erfolgreich aktualisiert</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.title">
+				<source>Changes are not applied at crowdin</source>
+				<target>Änderungen werden bei Crowdin nicht übernommen</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.message">
+				<source>Failed to update file. Error Code : %d</source>
+				<target>Fehler bei der Aktualisierung der Datei. Error Code : %d</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.message.storage">
+				<source>Some error occured with the storage</source>
+				<target>Ein Fehler ist bei der Speicherung aufgetreten</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.message.no_project">
+				<source>Please check project/file exists or not, no matching data found at crowdin</source>
+				<target>Bitte prüfen, ob Projekt/Datei vorhanden ist oder nicht, keine passenden Daten bei crowdin gefunden</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.system_extensions_only">
+				<source>Crowdin upload is only available for TYPO3 system extensions. Nothing was saved; use "Save" to save the file locally.</source>
+				<target>Der Crowdin-Upload ist nur für TYPO3-Systemerweiterungen verfügbar. Es wurde nichts gespeichert; mit „Speichern“ wird die Datei lokal gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.unreachable">
+				<source>Crowdin could not be reached. The local file was saved; please try the upload again later.</source>
+				<target>Crowdin ist nicht erreichbar. Die lokale Datei wurde gespeichert; bitte den Upload später erneut versuchen.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.auth">
+				<source>Crowdin rejected the access token (HTTP %d). Check the token and its project permissions in Settings → Extension Configuration → ns_t3al. The local file was saved.</source>
+				<target>Crowdin hat das Zugriffstoken abgelehnt (HTTP %d). Bitte Token und Projektberechtigungen unter Einstellungen → Extension-Konfiguration → ns_t3al prüfen. Die lokale Datei wurde gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.project_not_found">
+				<source>Crowdin project %d was not found. Check the project ID. The local file was saved.</source>
+				<target>Crowdin-Projekt %d wurde nicht gefunden. Bitte die Projekt-ID prüfen. Die lokale Datei wurde gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.file_not_found">
+				<source>No matching file found at Crowdin: %s. The local file was saved.</source>
+				<target>Keine passende Datei bei Crowdin gefunden: %s. Die lokale Datei wurde gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.language_not_in_project">
+				<source>Language "%s" (Crowdin id "%s") is not a target language of this Crowdin project. The local file was saved.</source>
+				<target>Sprache „%s“ (Crowdin-ID „%s“) ist keine Zielsprache dieses Crowdin-Projekts. Die lokale Datei wurde gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.write.crowdin.error.token_missing">
+				<source>Crowdin access token missing. Add it in Settings → Extension Configuration → ns_t3al. Nothing was saved.</source>
+				<target>Crowdin-Zugriffstoken fehlt. Bitte unter Einstellungen → Extension-Konfiguration → ns_t3al eintragen. Es wurde nichts gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="translation.module.translate.targetLanguage.all">
+				<source>All</source>
+				<target>Alle</target>
+			</trans-unit>
+			<trans-unit id="projectId.missing">
+				<source>Project ID is required</source>
+				<target>Wenn Sie dies auch in Crowdin speichern möchten, geben Sie bitte die Crowdin-Projekt-ID ein.</target>
+			</trans-unit>
+			<trans-unit id="projectId.missing_field_desc">
+				<source>The Project ID is required when saving to Crowdin</source>
+				<target>Die Projekt-ID ist erforderlich, wenn Sie in Crowdin speichern</target>
+			</trans-unit>
+			<trans-unit id="loader_text">
+				<source>Updating view…</source>
+				<target>Ansicht wird aktualisiert…</target>
+			</trans-unit>
+			<trans-unit id="loader_text_translate">
+				<source>AI translation in progress… Please wait.</source>
+				<target>KI-Übersetzung läuft… Bitte warten.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

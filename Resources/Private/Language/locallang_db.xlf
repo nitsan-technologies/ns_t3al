@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:ns_t3al/Resources/Private/Language/locallang_db.xlf" date="2026-10-07T12:00:00Z" product-name="ns_t3al">
+		<header/>
+		<body>
+			<trans-unit id="tx_nst3al_domain_model_logs">
+				<source>Translation log</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.crdate">
+				<source>Created</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.status">
+				<source>Saved successfully</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.extension_name">
+				<source>Extension</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.source_file">
+				<source>Source file</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.output_file">
+				<source>Output file</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.content">
+				<source>Changes</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.request_mode">
+				<source>Request mode</source>
+			</trans-unit>
+			<trans-unit id="tx_nst3al_domain_model_logs.target_language">
+				<source>Target language</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,33 @@
+# cat=OpenAI Settings//10; type=string; label=API Key
+openaiApiKey =
+# cat=OpenAI Settings//11; type=options[gpt-5.6-terra, gpt-5.6-luna, gpt-5.6-sol, gpt-4o]; label=Model
+openaiApiModel = gpt-5.6-terra
+
+# cat=Deepl Settings/12; type=string; label= Deepl API Key
+deeplApiKey =
+# cat=Deepl Settings/13; type=string; label= Deepl API Url
+deeplApiUrl = https://api-free.deepl.com/v2/translate
+
+# cat=Google Translate Settings/14; type=string; label= Google translate API Key
+googleApiKey =
+# cat=Google Translate Settings/15; type=string; label= Google translate API Url
+googleApiUrl = https://translation.googleapis.com/language/translate/v2
+
+# cat=Gemini settings//16; type=string; label=API Key
+geminiApiKey =
+# cat=Gemini settings//17; type=options[gemini-2.5-flash, gemini-2.5-flash-lite, gemini-3.6-flash]; label=Model
+geminiApiModel = gemini-2.5-flash
+
+# cat=Crowdin settings//18; type=user[NITSAN\NsT3AL\Configuration\PasswordField->render]; label=Access Token
+accessToken =
+# cat=Crowdin settings//19; type=string; label=Crowdin ApiUrl: Base URL of the Crowdin API v2 (a missing trailing slash is added)
+crowdinApiUrl = https://api.crowdin.com/api/v2/
+# cat=Crowdin settings//20; type=string; label=Crowdin system extension path: Crowdin directory that contains the TYPO3 system extensions (TYPO3 Core project layout)
+crowdinSystemExtensionPath = /main/typo3/sysext
+
+# cat=General settings//23; type=boolean; label=Enable Logs
+enableLogs = 1
+# cat=General settings//24; type=boolean; label=Enable Export
+enableExport = 1
+# cat=General settings//25; type=int+; label=Log retention (days): Logs older than this are deleted whenever a new log is written. 0 keeps all logs.
+logRetentionDays = 365

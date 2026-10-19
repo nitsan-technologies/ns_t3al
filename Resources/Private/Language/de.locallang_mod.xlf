@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf" date="2026-10-12T00:00:00Z" product-name="ns_t3al">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+				<source>AI Localization</source>
+				<target>AI Localization</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+				<source>AI-assisted XLIFF localization with Crowdin integration.</source>
+				<target>KI-gestützte XLIFF-Lokalisierung mit Crowdin-Integration.</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
+				<source>Translate extensions with AI</source>
+				<target>Erweiterungen mit KI übersetzen</target>
+			</trans-unit>
+			<trans-unit id="actionmenu.list" resname="actionmenu.list">
+				<source>Translate</source>
+				<target>Übersetzen</target>
+			</trans-unit>
+			<trans-unit id="actionmenu.search" resname="actionmenu.search">
+				<source>Search</source>
+				<target>Suche</target>
+			</trans-unit>
+			<trans-unit id="actionmenu.logs" resname="actionmenu.logs">
+				<source>Logs</source>
+				<target>Protokolle</target>
+			</trans-unit>
+			<trans-unit id="actionmenu.guide" resname="actionmenu.guide">
+				<source>Guide</source>
+				<target>Anleitung</target>
+			</trans-unit>
+			<trans-unit id="module.nav.sections" resname="module.nav.sections">
+				<source>AI Localization sections</source>
+				<target>Bereiche von AI Localization</target>
+			</trans-unit>
+			<trans-unit id="toolbar.actions" resname="toolbar.actions">
+				<source>Editor actions</source>
+				<target>Editor-Aktionen</target>
+			</trans-unit>
+			<trans-unit id="button.translate" resname="button.translate">
+				<source>Translate</source>
+				<target>Übersetzen</target>
+			</trans-unit>
+			<trans-unit id="button.saveLocal" resname="button.saveLocal">
+				<source>Save</source>
+				<target>Speichern</target>
+			</trans-unit>
+			<trans-unit id="button.saveCrowdin" resname="button.saveCrowdin">
+				<source>Save to Crowdin</source>
+				<target>In Crowdin speichern</target>
+			</trans-unit>
+			<trans-unit id="button.exportCsv" resname="button.exportCsv">
+				<source>Export CSV</source>
+				<target>CSV exportieren</target>
+			</trans-unit>
+			<trans-unit id="button.exportZip" resname="button.exportZip">
+				<source>Export ZIP</source>
+				<target>ZIP exportieren</target>
+			</trans-unit>
+			<trans-unit id="export.failed.title" resname="export.failed.title">
+				<source>Export ZIP failed</source>
+				<target>ZIP-Export fehlgeschlagen</target>
+			</trans-unit>
+			<trans-unit id="export.failed.message" resname="export.failed.message">
+				<source>The language files could not be packed. Check that the extension has files in Resources/Private/Language; details are in the TYPO3 log.</source>
+				<target>Die Sprachdateien konnten nicht gepackt werden. Prüfen Sie, ob die Erweiterung Dateien in Resources/Private/Language enthält; Details stehen im TYPO3-Log.</target>
+			</trans-unit>
+			<trans-unit id="export.unavailable.title" resname="export.unavailable.title">
+				<source>Export ZIP not available</source>
+				<target>ZIP-Export nicht verfügbar</target>
+			</trans-unit>
+			<trans-unit id="export.unavailable.message" resname="export.unavailable.message">
+				<source>Export ZIP is switched off in Extension Configuration (General settings → Enable Export), or the extension is a TYPO3 system extension, for which it is not offered.</source>
+				<target>Der ZIP-Export ist in der Extension-Konfiguration ausgeschaltet (General settings → Enable Export), oder die Erweiterung ist eine TYPO3-Systemerweiterung, für die er nicht angeboten wird.</target>
+			</trans-unit>
+			<trans-unit id="button.exportZip.title" resname="button.exportZip.title">
+				<source>Download all language files of this extension as ZIP</source>
+				<target>Alle Sprachdateien dieser Erweiterung als ZIP herunterladen</target>
+			</trans-unit>
+			<trans-unit id="title.list" resname="title.list">
+				<source>Translate</source>
+				<target>Übersetzen</target>
+			</trans-unit>
+			<trans-unit id="title.search" resname="title.search">
+				<source>Search</source>
+				<target>Suche</target>
+			</trans-unit>
+			<trans-unit id="title.logs" resname="title.logs">
+				<source>Translation Logs</source>
+				<target>Übersetzungsprotokolle</target>
+			</trans-unit>
+			<trans-unit id="logs.pagination" resname="logs.pagination">
+				<source>Log pages</source>
+				<target>Protokollseiten</target>
+			</trans-unit>
+			<trans-unit id="logs.pagination.previous" resname="logs.pagination.previous">
+				<source>Previous</source>
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="logs.pagination.next" resname="logs.pagination.next">
+				<source>Next</source>
+				<target>Weiter</target>
+			</trans-unit>
+			<trans-unit id="logs.pagination.status" resname="logs.pagination.status">
+				<source>Page %1$d of %2$d (%3$d logs)</source>
+				<target>Seite %1$d von %2$d (%3$d Protokolle)</target>
+			</trans-unit>
+			<trans-unit id="logs.date" resname="logs.date">
+				<source>Date</source>
+				<target>Datum</target>
+			</trans-unit>
+			<trans-unit id="title.guide" resname="title.guide">
+				<source>Localization Guide</source>
+				<target>Lokalisierungsanleitung</target>
+			</trans-unit>
+			<trans-unit id="guide.open_hint" resname="guide.open_hint">
+				<source>Use the Guide button to open the interactive localization walkthrough.</source>
+				<target>Über die Schaltfläche „Anleitung“ öffnen Sie die interaktive Einführung in die Lokalisierung.</target>
+			</trans-unit>
+			<trans-unit id="choose_extension" resname="choose_extension">
+				<source>Choose extension</source>
+				<target>Erweiterung wählen</target>
+			</trans-unit>
+			<trans-unit id="choose_file" resname="choose_file">
+				<source>Choose file</source>
+				<target>Datei wählen</target>
+			</trans-unit>
+			<trans-unit id="choose_language" resname="choose_language">
+				<source>Choose language</source>
+				<target>Sprache wählen</target>
+			</trans-unit>
+			<trans-unit id="label.key" resname="label.key">
+				<source>Key</source>
+				<target>Schlüssel</target>
+			</trans-unit>
+			<trans-unit id="label.default" resname="label.default">
+				<source>default</source>
+				<target>Standard</target>
+			</trans-unit>
+			<trans-unit id="label.actions" resname="label.actions">
+				<source>Actions</source>
+				<target>Aktionen</target>
+			</trans-unit>
+			<trans-unit id="add" resname="add">
+				<source>Add</source>
+				<target>Hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="remove" resname="remove">
+				<source>Remove</source>
+				<target>Entfernen</target>
+			</trans-unit>
+			<trans-unit id="move" resname="move">
+				<source>Move</source>
+				<target>Verschieben</target>
+			</trans-unit>
+			<trans-unit id="sort_by_key" resname="sort_by_key">
+				<source>Sort by key</source>
+				<target>Nach Schlüssel sortieren</target>
+			</trans-unit>
+			<trans-unit id="create_file" resname="create_file">
+				<source>Create file</source>
+				<target>Datei erstellen</target>
+			</trans-unit>
+			<trans-unit id="create_file.error" resname="create_file.error">
+				<source>Could not create file</source>
+				<target>Datei konnte nicht erstellt werden</target>
+			</trans-unit>
+			<trans-unit id="create_file.illegal" resname="create_file.illegal">
+				<source>Illegal filename. Use name.xlf</source>
+				<target>Ungültiger Dateiname. Verwenden Sie name.xlf</target>
+			</trans-unit>
+			<trans-unit id="create_file.exists" resname="create_file.exists">
+				<source>The file already exists</source>
+				<target>Die Datei existiert bereits</target>
+			</trans-unit>
+			<trans-unit id="csv.import" resname="csv.import">
+				<source>Import CSV</source>
+				<target>CSV importieren</target>
+			</trans-unit>
+			<trans-unit id="csv.error" resname="csv.error">
+				<source>CSV import failed</source>
+				<target>CSV-Import fehlgeschlagen</target>
+			</trans-unit>
+			<trans-unit id="csv.no_file" resname="csv.no_file">
+				<source>No file uploaded</source>
+				<target>Keine Datei hochgeladen</target>
+			</trans-unit>
+			<trans-unit id="csv.invalid" resname="csv.invalid">
+				<source>Invalid file format</source>
+				<target>Ungültiges Dateiformat</target>
+			</trans-unit>
+			<trans-unit id="csv.imported.title" resname="csv.imported.title">
+				<source>CSV imported</source>
+				<target>CSV importiert</target>
+			</trans-unit>
+			<trans-unit id="csv.imported.message" resname="csv.imported.message">
+				<source>%1$d existing labels updated, %2$d new keys added. Keys that are not in the CSV are kept unchanged. Click "Save" to write the files.</source>
+				<target>%1$d vorhandene Labels aktualisiert, %2$d neue Schlüssel hinzugefügt. Schlüssel, die nicht in der CSV stehen, bleiben unverändert. Klicken Sie auf „Speichern“, um die Dateien zu schreiben.</target>
+			</trans-unit>
+			<trans-unit id="access.denied.title" resname="access.denied.title">
+				<source>Access denied</source>
+				<target>Zugriff verweigert</target>
+			</trans-unit>
+			<trans-unit id="access.denied" resname="access.denied">
+				<source>This action requires administrator privileges.</source>
+				<target>Diese Aktion erfordert Administratorrechte.</target>
+			</trans-unit>
+			<trans-unit id="access.extension_denied" resname="access.extension_denied">
+				<source>Your backend user group is not allowed to edit the language files of this extension. Ask an administrator to grant it under Access Rights → Custom module options.</source>
+				<target>Ihre Backend-Benutzergruppe darf die Sprachdateien dieser Erweiterung nicht bearbeiten. Bitten Sie einen Administrator, sie unter Zugriffsrechte → Benutzerdefinierte Moduloptionen freizugeben.</target>
+			</trans-unit>
+			<trans-unit id="access.no_extensions.title" resname="access.no_extensions.title">
+				<source>No extensions available</source>
+				<target>Keine Erweiterungen verfügbar</target>
+			</trans-unit>
+			<trans-unit id="access.no_extensions" resname="access.no_extensions">
+				<source>No extension has been enabled for your backend user group yet. Ask an administrator to grant extensions under Access Rights → Custom module options → AI Localization: editable extensions.</source>
+				<target>Für Ihre Backend-Benutzergruppe wurde noch keine Erweiterung freigegeben. Bitten Sie einen Administrator, Erweiterungen unter Zugriffsrechte → Benutzerdefinierte Moduloptionen → AI Localization: bearbeitbare Erweiterungen freizugeben.</target>
+			</trans-unit>
+			<trans-unit id="save.file_not_found.title" resname="save.file_not_found.title">
+				<source>Language file not found</source>
+				<target>Sprachdatei nicht gefunden</target>
+			</trans-unit>
+			<trans-unit id="save.file_not_found" resname="save.file_not_found">
+				<source>The selected language file does not exist in this extension. New files can only be created by an administrator via "Create file".</source>
+				<target>Die ausgewählte Sprachdatei existiert in dieser Erweiterung nicht. Neue Dateien kann nur ein Administrator über „Datei erstellen“ anlegen.</target>
+			</trans-unit>
+			<trans-unit id="unsaved.title" resname="unsaved.title">
+				<source>Unsaved changes</source>
+				<target>Ungespeicherte Änderungen</target>
+			</trans-unit>
+			<trans-unit id="unsaved.message" resname="unsaved.message">
+				<source>The label grid has unsaved changes (edited texts, moved or deleted rows). They are lost if you leave now. Use Save to keep them.</source>
+				<target>Die Label-Tabelle enthält ungespeicherte Änderungen (bearbeitete Texte, verschobene oder gelöschte Zeilen). Sie gehen verloren, wenn Sie die Seite jetzt verlassen. Mit „Speichern“ behalten Sie sie.</target>
+			</trans-unit>
+			<trans-unit id="unsaved.stay" resname="unsaved.stay">
+				<source>Keep editing</source>
+				<target>Weiter bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="unsaved.discard" resname="unsaved.discard">
+				<source>Discard changes</source>
+				<target>Änderungen verwerfen</target>
+			</trans-unit>
+			<trans-unit id="row.delete.title" resname="row.delete.title">
+				<source>Delete label</source>
+				<target>Label löschen</target>
+			</trans-unit>
+			<trans-unit id="row.delete.message" resname="row.delete.message">
+				<source>Delete the label "%s" with all its translations? The file changes only when you save.</source>
+				<target>Das Label „%s“ mit allen Übersetzungen löschen? Die Datei ändert sich erst beim Speichern.</target>
+			</trans-unit>
+			<trans-unit id="row.delete.confirm" resname="row.delete.confirm">
+				<source>Delete</source>
+				<target>Löschen</target>
+			</trans-unit>
+			<trans-unit id="row.delete.cancel" resname="row.delete.cancel">
+				<source>Cancel</source>
+				<target>Abbrechen</target>
+			</trans-unit>
+			<trans-unit id="save.no_changes.title" resname="save.no_changes.title">
+				<source>No changes</source>
+				<target>Keine Änderungen</target>
+			</trans-unit>
+			<trans-unit id="save.no_changes" resname="save.no_changes">
+				<source>Nothing was changed, so no language file was modified.</source>
+				<target>Es wurde nichts geändert, daher wurde keine Sprachdatei verändert.</target>
+			</trans-unit>
+			<trans-unit id="save.source_read_only.title" resname="save.source_read_only.title">
+				<source>Source file is read-only</source>
+				<target>Quelldatei ist schreibgeschützt</target>
+			</trans-unit>
+			<trans-unit id="save.key_error.title" resname="save.key_error.title">
+				<source>Label keys need attention</source>
+				<target>Label-Schlüssel prüfen</target>
+			</trans-unit>
+			<trans-unit id="save.duplicate_keys.message" resname="save.duplicate_keys.message">
+				<source>These keys would exist more than once: %s. Nothing was saved or translated; rename or remove the duplicate rows and try again.</source>
+				<target>Diese Schlüssel wären mehrfach vorhanden: %s. Es wurde nichts gespeichert oder übersetzt; benennen Sie die doppelten Zeilen um oder entfernen Sie sie und versuchen Sie es erneut.</target>
+			</trans-unit>
+			<trans-unit id="save.invalid_keys.message" resname="save.invalid_keys.message">
+				<source>Invalid keys: %s. Use only letters, digits, "_", "." and "-". Nothing was saved or translated.</source>
+				<target>Ungültige Schlüssel: %s. Verwenden Sie nur Buchstaben, Ziffern, „_“, „.“ und „-“. Es wurde nichts gespeichert oder übersetzt.</target>
+			</trans-unit>
+			<trans-unit id="save.source_read_only" resname="save.source_read_only">
+				<source>This is a TYPO3 system extension: its English source file belongs to the TYPO3 Core and is never modified. Changes to keys or English texts were ignored; only translations are saved (to the language pack folder).</source>
+				<target>Dies ist eine TYPO3-Systemerweiterung: Ihre englische Quelldatei gehört zum TYPO3 Core und wird nie verändert. Änderungen an Schlüsseln oder englischen Texten wurden ignoriert; nur Übersetzungen werden gespeichert (im Ordner der Sprachpakete).</target>
+			</trans-unit>
+			<trans-unit id="create_file.source_read_only" resname="create_file.source_read_only">
+				<source>Language files cannot be created inside TYPO3 system extensions (TYPO3 Core).</source>
+				<target>In TYPO3-Systemerweiterungen (TYPO3 Core) können keine Sprachdateien erstellt werden.</target>
+			</trans-unit>
+			<trans-unit id="permission.extensions.header" resname="permission.extensions.header">
+				<source>AI Localization: editable extensions</source>
+				<target>AI Localization: bearbeitbare Erweiterungen</target>
+			</trans-unit>
+			<trans-unit id="permission.extensions.item.description" resname="permission.extensions.item.description">
+				<source>Allows non-admin users of this group to translate and save the language files of this extension in the AI Localization module.</source>
+				<target>Erlaubt Benutzern dieser Gruppe ohne Administratorrechte, die Sprachdateien dieser Erweiterung im Modul AI Localization zu übersetzen und zu speichern.</target>
+			</trans-unit>
+			<trans-unit id="search_text" resname="search_text">
+				<source>Search text</source>
+				<target>Suchtext</target>
+			</trans-unit>
+			<trans-unit id="search_all" resname="search_all">
+				<source>Search all</source>
+				<target>Alles durchsuchen</target>
+			</trans-unit>
+			<trans-unit id="search_results" resname="search_results">
+				<source>Search results</source>
+				<target>Suchergebnisse</target>
+			</trans-unit>
+			<trans-unit id="search_results_none" resname="search_results_none">
+				<source>No results</source>
+				<target>Keine Ergebnisse</target>
+			</trans-unit>
+			<trans-unit id="search_language" resname="search_language">
+				<source>Language</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="search_language_all" resname="search_language_all">
+				<source>All languages</source>
+				<target>Alle Sprachen</target>
+			</trans-unit>
+			<trans-unit id="search_language_default" resname="search_language_default">
+				<source>English (source)</source>
+				<target>Englisch (Quelle)</target>
+			</trans-unit>
+			<trans-unit id="search_results_limited" resname="search_results_limited">
+				<source>Only the first %d matching files are shown. Refine the search text or pick a language.</source>
+				<target>Es werden nur die ersten %d passenden Dateien angezeigt. Verfeinern Sie den Suchtext oder wählen Sie eine Sprache.</target>
+			</trans-unit>
+			<trans-unit id="button.reload" resname="button.reload">
+				<source>Reload</source>
+				<target>Neu laden</target>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.title" resname="concurrent_edit.title">
+				<source>Warning</source>
+				<target>Warnung</target>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.someone" resname="concurrent_edit.someone">
+				<source>Someone else</source>
+				<target>Jemand anderes</target>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.lessThanMinute" resname="concurrent_edit.message.lessThanMinute">
+				<source>%1$s started editing the file %2$s less than a minute ago.</source>
+				<target>%1$s hat vor weniger als einer Minute begonnen, die Datei %2$s zu bearbeiten.</target>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.oneMinute" resname="concurrent_edit.message.oneMinute">
+				<source>%1$s started editing the file %2$s 1 minute ago.</source>
+				<target>%1$s hat vor 1 Minute begonnen, die Datei %2$s zu bearbeiten.</target>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.minutes" resname="concurrent_edit.message.minutes">
+				<source>%1$s started editing the file %2$s %3$d minutes ago.</source>
+				<target>%1$s hat vor %3$d Minuten begonnen, die Datei %2$s zu bearbeiten.</target>
+			</trans-unit>
+			<trans-unit id="max_input_vars.title" resname="max_input_vars.title">
+				<source>Too many labels</source>
+				<target>Zu viele Labels</target>
+			</trans-unit>
+			<trans-unit id="max_input_vars.message" resname="max_input_vars.message">
+				<source>Too many labels, max_input_vars too small. Set max_input_vars to at least: %s</source>
+				<target>Zu viele Labels, max_input_vars ist zu klein. Setzen Sie max_input_vars auf mindestens: %s</target>
+			</trans-unit>
+			<trans-unit id="toolbar.crowdinId" resname="toolbar.crowdinId">
+				<source>Crowdin project ID</source>
+				<target>Crowdin-Projekt-ID</target>
+			</trans-unit>
+			<trans-unit id="filter.label" resname="filter.label">
+				<source>Extension type</source>
+				<target>Erweiterungstyp</target>
+			</trans-unit>
+			<trans-unit id="filter.all" resname="filter.all">
+				<source>All</source>
+				<target>Alle</target>
+			</trans-unit>
+			<trans-unit id="filter.system" resname="filter.system">
+				<source>System</source>
+				<target>System</target>
+			</trans-unit>
+			<trans-unit id="filter.local" resname="filter.local">
+				<source>Local</source>
+				<target>Lokal</target>
+			</trans-unit>
+			<trans-unit id="title.list.intro" resname="title.list.intro">
+				<source>Edit extension language files side by side, fill missing translations with AI and save them.</source>
+				<target>Sprachdateien von Erweiterungen nebeneinander bearbeiten, fehlende Übersetzungen mit KI ergänzen und speichern.</target>
+			</trans-unit>
+			<trans-unit id="title.search.intro" resname="title.search.intro">
+				<source>Find a label text in the language files of all extensions.</source>
+				<target>Einen Label-Text in den Sprachdateien aller Erweiterungen finden.</target>
+			</trans-unit>
+			<trans-unit id="title.logs.intro" resname="title.logs.intro">
+				<source>Review every saved change to a language file, with a diff per label.</source>
+				<target>Jede gespeicherte Änderung an einer Sprachdatei prüfen, mit Diff pro Label.</target>
+			</trans-unit>
+			<trans-unit id="field.extension" resname="field.extension">
+				<source>Extension</source>
+				<target>Erweiterung</target>
+			</trans-unit>
+			<trans-unit id="field.file" resname="field.file">
+				<source>Language file</source>
+				<target>Sprachdatei</target>
+			</trans-unit>
+			<trans-unit id="field.newFile" resname="field.newFile">
+				<source>New language file</source>
+				<target>Neue Sprachdatei</target>
+			</trans-unit>
+			<trans-unit id="field.languages" resname="field.languages">
+				<source>Target languages</source>
+				<target>Zielsprachen</target>
+			</trans-unit>
+			<trans-unit id="field.searchText" resname="field.searchText">
+				<source>Label text</source>
+				<target>Label-Text</target>
+			</trans-unit>
+			<trans-unit id="toolbar.provider" resname="toolbar.provider">
+				<source>AI provider</source>
+				<target>KI-Anbieter</target>
+			</trans-unit>
+			<trans-unit id="footer.developedBy" resname="footer.developedBy">
+				<source>Developed by</source>
+				<target>Entwickelt von</target>
+			</trans-unit>
+			<trans-unit id="footer.about" resname="footer.about">
+				<source>About</source>
+				<target>Über</target>
+			</trans-unit>
+			<trans-unit id="footer.support" resname="footer.support">
+				<source>Support</source>
+				<target>Support</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

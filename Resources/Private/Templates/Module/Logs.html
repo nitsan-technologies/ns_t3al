@@ -1,0 +1,101 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+	<div class="ns-t3al-module">
+		<div id="ns-t3al__loader" class="ns-t3al-module-loader"
+			data-loader-default="{f:translate(key:'loader_text', extensionName:'ns_t3al')}">
+			<div class="ns-t3al-loader-content" role="status">
+				<typo3-backend-spinner size="large"></typo3-backend-spinner>
+				<span class="loader-text"><f:translate key="loader_text" extensionName="ns_t3al" /></span>
+			</div>
+		</div>
+		<f:flashMessages />
+		<f:variable name="heading"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.logs" /></f:variable>
+		<f:variable name="intro"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.logs.intro" /></f:variable>
+		<f:render partial="Module/PageHeader" arguments="{heading: heading, intro: intro, badge: filter.extensionKey}" />
+
+		<f:if condition="!{extkey} && !{filter.extensionKey}">
+			<f:form action="logs" controller="Module" class="ns-t3al-filter" id="ns-t3al-extension-picker">
+				<div class="card ns-t3al-card">
+					<div class="card-body">
+						<f:render partial="Module/Filter" arguments="{extensions: extensions, extkey: extkey, extType: extType}" />
+					</div>
+				</div>
+			</f:form>
+		</f:if>
+
+		<f:if condition="{filter.extensionKey}">
+			<form method="post" action="{f:uri.action(action: 'logs', arguments: {extensionKey: filter.extensionKey})}" id="translationLogs" class="ns-t3al-filter">
+				<input type="hidden" name="extkey" value="{filter.extensionKey}" />
+				<div class="card ns-t3al-card">
+					<div class="card-body">
+						<div class="row g-3 align-items-end">
+							<div class="col-12 col-md-6">
+								<label class="form-label" for="logFile"><f:translate key="translation.module.translate.file" extensionName="ns_t3al" /></label>
+								<select name="logFile" class="form-select ns-t3al-filter-select" id="logFile" required>
+									<f:for each="{files}" as="file" key="fileName">
+										<option value="{file}" {f:if(condition: '{filter.sourceFile} == {fileName} || {filter.sourceFile} == {file}', then: 'selected')}>{fileName}</option>
+									</f:for>
+								</select>
+							</div>
+							<f:if condition="{targetLanguages}">
+								<div class="col-12 col-md-6">
+									<label class="form-label" for="targetLanguage"><f:translate key="translation.module.translate.targetLanguage" extensionName="ns_t3al" /></label>
+									<select name="targetLanguage" class="form-select ns-t3al-filter-select" id="targetLanguage">
+										<option value=""><f:translate key="translation.module.translate.targetLanguage.all" extensionName="ns_t3al" /></option>
+										<f:for each="{targetLanguages}" as="lang" key="iso">
+											<option value="{iso}" {f:if(condition: '{filter.targetLanguage} == {iso}', then: 'selected')}>{lang}</option>
+										</f:for>
+									</select>
+								</div>
+							</f:if>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<f:if condition="{logRecords}">
+				<div class="ns-t3al-logs-toolbar">
+					<f:if condition="{pagination.totalItems}">
+						<span class="text-variant">
+							<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.pagination.status" arguments="{0: pagination.currentPage, 1: pagination.numberOfPages, 2: pagination.totalItems}" />
+						</span>
+					</f:if>
+					<div class="ms-auto">
+						<input type="checkbox" class="btn-check toggle-all-button" id="expandAllButton" autocomplete="off">
+						<label class="btn btn-default btn-sm expand-all-button" for="expandAllButton">
+							<core:icon identifier="actions-toggle-off" size="small" />
+							<core:icon identifier="actions-toggle-on" size="small" />
+							<f:translate key="file.ToggleCollapse" extensionName="ns_t3al"/>
+						</label>
+					</div>
+				</div>
+				<f:render partial="Logs" arguments="{_all}" />
+				<f:if condition="{pagination.numberOfPages} > 1">
+					<nav class="d-flex align-items-center justify-content-end gap-2 mt-3" aria-label="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.pagination')}">
+						<f:if condition="{pagination.previousPage}">
+							<f:link.action action="logs" class="btn btn-default btn-sm" arguments="{extensionKey: filter.extensionKey, logFile: filter.sourceFile, targetLanguage: filter.targetLanguage, currentPage: pagination.previousPage}">
+								<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.pagination.previous" />
+							</f:link.action>
+						</f:if>
+						<span class="text-variant">
+							<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.pagination.status" arguments="{0: pagination.currentPage, 1: pagination.numberOfPages, 2: pagination.totalItems}" />
+						</span>
+						<f:if condition="{pagination.nextPage}">
+							<f:link.action action="logs" class="btn btn-default btn-sm" arguments="{extensionKey: filter.extensionKey, logFile: filter.sourceFile, targetLanguage: filter.targetLanguage, currentPage: pagination.nextPage}">
+								<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.pagination.next" />
+							</f:link.action>
+						</f:if>
+					</nav>
+				</f:if>
+			</f:if>
+		</f:if>
+	</div>
+</f:section>
+</html>

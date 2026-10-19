@@ -1,0 +1,24 @@
+# Dev tooling (composer.json require-dev) installs into .Build/.
+/.Build/
+/composer.lock
+/var/
+/.composer/
+.php-cs-fixer.cache
+.DS_Store
+.idea/
+
+# Agent tooling: shared skills, symlinks and the Cursor rule are committed; local settings are not.
+.claude/settings.local.json
+.agents/skills-local/*
+!.agents/skills-local/.gitkeep
+.claude/*
+!.claude/skills/
+!.claude/skills/**
+.cursor/*
+!.cursor/skills/
+!.cursor/skills/**
+!.cursor/rules/
+!.cursor/rules/**
+
+# Rendered documentation (make docs / render-guides)
+/Documentation-GENERATED-temp

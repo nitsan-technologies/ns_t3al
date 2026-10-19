@@ -1,0 +1,19 @@
+.. include defaults for TYPO3 documentation
+
+.. default-role:: literal
+
+.. highlight:: php
+
+.. |extension_name| replace:: AI Localization
+.. |extension_key| replace:: ns_t3al
+.. |package_name| replace:: nitsan/ns-t3al
+.. |extension_version| replace:: 1.0.0
+.. |extension_state| replace:: stable
+.. |extension_license| replace:: GPL-2.0-or-later
+.. |extension_author| replace:: Team NITSAN // T3Planet
+.. |extension_author_url| replace:: https://t3planet.de
+.. |extension_homepage| replace:: https://t3planet.de/t3al-typo3-erweiterung
+.. |support_url| replace:: https://t3planet.de/support
+
+.. role:: typoscript(code)
+   :language: typoscript

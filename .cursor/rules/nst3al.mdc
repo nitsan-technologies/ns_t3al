@@ -1,0 +1,18 @@
+---
+description: ns_t3al (AI-Powered XLIFF Translation) XLIFF editor rules - one module, in-place saves, v12-v14 compatibility
+globs: "**/*.{php,html,js,css,xlf,yaml,sql,txt}"
+alwaysApply: false
+---
+
+# ns_t3al
+
+- Load `AGENTS.md` in this extension first; follow `context/principles.md`.
+- One Admin Tools module (`tools_NsT3al`, `ModuleController`) owns the UX. No AJAX routes, no second UI, no Extension Manager override.
+- XLF writes only via Save / Create file; existing files are updated in place (`XliffDocumentUpdater` + `XliffFormatRestorer`) with minimal diffs. Never write TYPO3 Core English sources.
+- AI is missing-only and batches are keyed + count-checked; results stay in the grid until Save.
+- Permissions only via `ExtensionAccessService::canEdit()`.
+- Must run on TYPO3 12.4 / 13.4 / 14.3 and PHP 8.1–8.5 — see `context/core.md` → Compatibility.
+- Never log or print API keys, the Crowdin token or ns_license settings; QA never reaches the license server.
+- Do not restore removed UI listed in `context/session-state.md`.
+- New labels go into `locallang.xlf` and `de.locallang.xlf`.
+- Edit skills in `.agents/skills/`, then run `.agents/scripts/link-skills.sh`.

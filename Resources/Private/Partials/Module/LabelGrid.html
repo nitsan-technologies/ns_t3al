@@ -1,0 +1,69 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<input type="hidden" name="requestMode" value="Manual" />
+<input type="hidden" name="extensionType" value="{extensionType}" />
+<f:if condition="{sortByKey}">
+	<input type="hidden" name="sortByKey" value="1" />
+</f:if>
+
+<div class="translate-table">
+	<div class="translate-row header">
+		<div class="ns-t3al-col-key"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:label.key" /></div>
+		<div class="ns-t3al-col-default">{defaultLangKey} (<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:label.default" />)</div>
+		<f:for each="{langKeys}" as="langKey">
+			<f:if condition="{langKey} != 'default'"><div class="ns-t3al-col-lang">{langKey}</div></f:if>
+		</f:for>
+		<f:if condition="{sourceEditable}">
+			<div class="ns-t3al-col-actions"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:label.actions" /></div>
+		</f:if>
+	</div>
+	<f:for each="{labels}" as="label" key="key">
+		<f:if condition="{key}">
+			<div class="translate-row">
+				<div class="ns-t3al-col-key">
+					<f:form.textfield name="keys[{key}]" value="{key}" readonly="{f:if(condition:'{sourceEditable}', else:'1')}" additionalAttributes="{autocomplete:'off'}" />
+				</div>
+				<div class="ns-t3al-col-default {f:if(condition:'{label.default}',else:'nd')}">
+					<f:form.textarea name="labels[{key}][default]" value="{label.default}" readonly="{f:if(condition:'{sourceEditable}', else:'1')}" />
+				</div>
+				<f:for each="{label}" as="value" key="langKey">
+					<f:if condition="{langKey} != 'default'">
+						<div class="ns-t3al-col-lang {f:if(condition: '{value}', then: '{f:if(condition:\'{value} == {label.default}\',then:\'same\')}',else:'nt')}">
+							<f:form.textarea name="labels[{key}][{langKey}]" value="{value}" />
+						</div>
+					</f:if>
+				</f:for>
+				<f:if condition="{sourceEditable}">
+					<f:render partial="Module/Icons" arguments="{_all}" />
+				</f:if>
+			</div>
+		</f:if>
+	</f:for>
+	<f:comment>Only an empty file needs a blank row to start from; otherwise the row "+" button adds rows.</f:comment>
+	<f:if condition="{sourceEditable}">
+		<f:if condition="{labels}">
+			<f:else>
+				<div class="translate-row">
+					<div class="ns-t3al-col-key">
+						<f:form.textfield name="keys[_newkey{time}]" value="" additionalAttributes="{autocomplete:'off'}" />
+					</div>
+					<div class="ns-t3al-col-default">
+						<f:form.textarea name="labels[_newkey{time}][default]" value="" />
+					</div>
+					<f:for each="{langKeys}" as="langKey">
+						<f:if condition="{langKey} != 'default'">
+							<div class="ns-t3al-col-lang">
+								<f:form.textarea name="labels[_newkey{time}][{langKey}]" value="" />
+							</div>
+						</f:if>
+					</f:for>
+					<f:render partial="Module/Icons" arguments="{_all}" />
+				</div>
+			</f:else>
+		</f:if>
+	</f:if>
+</div>
+</html>

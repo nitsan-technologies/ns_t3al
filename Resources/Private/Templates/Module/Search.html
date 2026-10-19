@@ -1,0 +1,79 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+	<div class="ns-t3al-module">
+		<div id="ns-t3al__loader" class="ns-t3al-module-loader"
+			data-loader-default="{f:translate(key:'loader_text', extensionName:'ns_t3al')}">
+			<div class="ns-t3al-loader-content" role="status">
+				<typo3-backend-spinner size="large"></typo3-backend-spinner>
+				<span class="loader-text"><f:translate key="loader_text" extensionName="ns_t3al" /></span>
+			</div>
+		</div>
+		<f:flashMessages />
+		<f:variable name="heading"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.search" /></f:variable>
+		<f:variable name="intro"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.search.intro" /></f:variable>
+		<f:render partial="Module/PageHeader" arguments="{heading: heading, intro: intro}" />
+
+		<f:form action="search" controller="Module" class="ns-t3al-search-form">
+			<div class="card ns-t3al-card">
+				<div class="card-body">
+					<div class="row g-3 align-items-end">
+						<div class="col-12 col-lg">
+							<label class="form-label" for="ns-t3al-search-word"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:field.searchText" /></label>
+							<f:form.textfield name="word" value="{word}" id="ns-t3al-search-word" class="form-control" placeholder="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_text')}"/>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3">
+							<label class="form-label" for="ns-t3al-search-language"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_language" /></label>
+							<f:form.select name="searchLang" value="{searchLang}" options="{languageOptions}" id="ns-t3al-search-language" class="form-select" />
+						</div>
+						<div class="col-12 col-md-auto">
+							<f:form.button type="submit" class="btn btn-primary">
+								<core:icon identifier="actions-search" size="small" alternativeMarkupIdentifier="inline" />
+								{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_all')}
+							</f:form.button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</f:form>
+
+		<f:if condition="{word}">
+			<f:if condition="{limited}">
+				<f:be.infobox state="-1" message="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_results_limited', arguments: {0: maxResults})}" />
+			</f:if>
+			<div class="card ns-t3al-card">
+				<div class="card-header">
+					<h2 class="card-title"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_results" /></h2>
+					<f:if condition="{results}">
+						<span class="badge badge-secondary"><f:count subject="{results}" /></span>
+					</f:if>
+				</div>
+				<f:if condition="{results}">
+					<f:then>
+						<ul class="list-group list-group-flush ns-t3al-search-results">
+							<f:for each="{results}" as="result">
+								<li class="list-group-item">
+									<f:link.action action="list" arguments="{extensionKey:result.0,file:result.1,langKeys:result.2}">
+										<core:icon identifier="mimetypes-text-text" size="small" />
+										<strong>{result.0}</strong><span class="text-variant">/Resources/Private/Language/</span>{result.1}
+									</f:link.action>
+								</li>
+							</f:for>
+						</ul>
+					</f:then>
+					<f:else>
+						<div class="card-body">
+							<p class="text-variant mb-0"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:search_results_none" /></p>
+						</div>
+					</f:else>
+				</f:if>
+			</div>
+		</f:if>
+	</div>
+</f:section>
+</html>

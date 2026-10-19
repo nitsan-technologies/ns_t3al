@@ -1,0 +1,150 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+	<div class="row g-3 align-items-end ns-t3al-filter-grid">
+		<div class="col-12 col-lg-auto">
+			<span class="form-label d-block" id="ns-t3al-ext-type-label"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:filter.label" /></span>
+			<div class="ns-t3al-ext-type-filter btn-group" role="group" aria-labelledby="ns-t3al-ext-type-label">
+				<button type="button" class="btn btn-default{f:if(condition:'{extType} == \'Local\'', then:' active')}" data-ns-t3al-ext-type="Local">
+					<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:filter.local" />
+				</button>
+				<button type="button" class="btn btn-default{f:if(condition:'{extType} == \'System\'', then:' active')}" data-ns-t3al-ext-type="System">
+					<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:filter.system" />
+				</button>
+				<button type="button" class="btn btn-default{f:if(condition:'{extType} == \'All\'', then:' active')}" data-ns-t3al-ext-type="All">
+					<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:filter.all" />
+				</button>
+			</div>
+			<f:form.hidden name="extType" id="ns-t3al-ext-type" value="{extType}" />
+		</div>
+
+		<div class="col-12 col-lg ns-t3al-extension-picker">
+			<label class="form-label" for="ns-t3al-extkey-search"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:field.extension" /></label>
+			<div class="ns-t3al-combobox"
+				data-ns-t3al-combobox
+				data-ns-t3al-combobox-mode="single"
+				data-ns-t3al-combobox-select="#ns-t3al-extkey"
+				data-empty-label="{f:translate(key: 'translation.module.searchNoMatch', extensionName: 'ns_t3al')}">
+				<div class="ns-t3al-combobox__control input-group">
+					<input type="text"
+						class="form-control ns-t3al-combobox__input"
+						id="ns-t3al-extkey-search"
+						autocomplete="off"
+						role="combobox"
+						aria-expanded="false"
+						aria-controls="ns-t3al-extkey-listbox"
+						aria-autocomplete="list"
+						placeholder="{f:translate(key: 'translation.module.searchExtension', extensionName: 'ns_t3al')}" />
+					<button type="button"
+						class="btn btn-default ns-t3al-combobox__toggle"
+						tabindex="-1"
+						aria-label="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:choose_extension')}">
+						<core:icon identifier="actions-chevron-down" size="small" />
+					</button>
+				</div>
+				<div id="ns-t3al-extkey-listbox" class="ns-t3al-combobox__menu" role="listbox" hidden></div>
+				<f:form.select
+					name="extkey"
+					id="ns-t3al-extkey"
+					class="ns-t3al-combobox__native"
+					options="{extensions}"
+					optionValueField="key"
+					optionLabelField="title"
+					value="{extkey}"
+					prependOptionValue="0"
+					prependOptionLabel="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:choose_extension')}"
+					additionalAttributes="{'data-name': 'extkey', 'aria-hidden': 'true', 'tabindex': '-1'}" />
+				<div class="ns-t3al-combobox__meta" hidden aria-hidden="true">
+					<f:for each="{extensions}" as="extension">
+						<span data-value="{extension.key}" data-group="{extension.type}" data-title="{extension.title}"></span>
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<f:if condition="{extkey}">
+		<f:if condition="{files} || {sourceEditable}">
+			<div class="row g-3 mt-0 ns-t3al-file-row">
+				<f:if condition="{files}">
+					<div class="col-12 col-md-6 ns-t3al-file-select">
+						<label class="form-label" for="ns-t3al-file"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:field.file" /></label>
+						<f:form.select
+							name="file"
+							id="ns-t3al-file"
+							class="form-select"
+							options="{files}"
+							value="{file}"
+							prependOptionValue="0"
+							prependOptionLabel="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:choose_file')}"
+							additionalAttributes="{'data-name': 'file'}" />
+					</div>
+				</f:if>
+				<f:if condition="{sourceEditable}">
+					<div class="col-12 col-md-6 ns-t3al-create-file">
+						<label class="form-label" for="ns-t3al-new-file"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:field.newFile" /></label>
+						<div class="input-group">
+							<input type="text"
+								class="form-control"
+								id="ns-t3al-new-file"
+								name="newFile"
+								form="translate_create_file"
+								value=""
+								placeholder="locallang_db.xlf"
+								autocomplete="off" />
+							<button type="submit"
+								class="btn btn-default"
+								form="translate_create_file">
+								<core:icon identifier="actions-add" size="small" />
+								<f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:create_file" />
+							</button>
+						</div>
+					</div>
+				</f:if>
+			</div>
+		</f:if>
+		<f:if condition="{file}">
+			<div class="row g-3 mt-0">
+				<div class="col-12 ns-t3al-language-picker">
+					<label class="form-label" for="ns-t3al-langkeys-search"><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:field.languages" /></label>
+					<div class="ns-t3al-combobox"
+						data-ns-t3al-combobox
+						data-ns-t3al-combobox-mode="multi"
+						data-ns-t3al-combobox-select="#ns-t3al-langkeys"
+						data-empty-label="{f:translate(key: 'translation.module.searchNoMatch', extensionName: 'ns_t3al')}"
+						data-selected-label="{f:translate(key: 'translation.module.languagesSelected', extensionName: 'ns_t3al')}">
+						<div class="ns-t3al-combobox__control input-group">
+							<input type="text"
+								class="form-control ns-t3al-combobox__input"
+								id="ns-t3al-langkeys-search"
+								autocomplete="off"
+								role="combobox"
+								aria-expanded="false"
+								aria-controls="ns-t3al-langkeys-listbox"
+								aria-autocomplete="list"
+								placeholder="{f:translate(key: 'translation.module.searchLanguage', extensionName: 'ns_t3al')}" />
+							<button type="button"
+								class="btn btn-default ns-t3al-combobox__toggle"
+								tabindex="-1"
+								aria-label="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:choose_language')}">
+								<core:icon identifier="actions-chevron-down" size="small" />
+							</button>
+						</div>
+						<div class="ns-t3al-combobox__chips" hidden></div>
+						<div id="ns-t3al-langkeys-listbox" class="ns-t3al-combobox__menu" role="listbox" aria-multiselectable="true" hidden></div>
+						<f:form.select
+							name="langKeys"
+							id="ns-t3al-langkeys"
+							class="ns-t3al-combobox__native"
+							options="{allLanguagesList}"
+							value="{langKeys}"
+							multiple="1"
+							additionalAttributes="{'data-name': 'langKeys', 'aria-hidden': 'true', 'tabindex': '-1'}" />
+					</div>
+				</div>
+			</div>
+		</f:if>
+	</f:if>
+</html>

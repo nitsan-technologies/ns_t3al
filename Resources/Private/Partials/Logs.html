@@ -1,0 +1,52 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<f:for each="{logRecords}" as="logs" iteration="k">
+    <f:if condition="{logs.ContentArray}">
+        <div class="panel panel-{f:if(condition: '{logs.requestMode} == Manual', then: 'default', else: 'important')} mt-3">
+            <div class="panel-heading d-flex align-items-center p-2" role="tab" id="heading-{filter.sourceFile}">
+                <h3 class="panel-title {f:if(condition: '{k.isFirst}', else: 'collapsed')} w-100 py-1" role="button"
+                    data-bs-toggle="collapse" href="#collapse-tab-logs{k.cycle}" aria-expanded="false"
+                    aria-controls="collapse-{filter.sourceFile}">
+                    <span class="caret"></span>
+                    <f:switch expression="{logs.requestMode}">
+                        <f:case value="Manual"><core:icon identifier="actions-file-edit" alternativeMarkupIdentifier="inline" size="small" /></f:case>
+                        <f:defaultCase>
+                            <core:icon identifier="t3al-icon" alternativeMarkupIdentifier="inline" size="small" />
+                        </f:defaultCase>
+                    </f:switch> <strong>{filter.sourceFile} => {logs.outputFile}</strong>
+                </h3>
+                
+                <button type="button" class="btn btn-danger btn-sm t3js-modal-trigger ms-auto"
+                    href="{be:moduleLink(route:'tce_db', query:'cmd[tx_nst3al_domain_model_logs][{logs.uid}][delete]=1', arguments:'{redirect: returnUrl}')}"
+                    title="{f:translate(key: 'LLL:EXT:core/Resources/Private/Language/locallang_mod_web_list.xlf:delete')}"
+                    data-severity="warning"
+                    data-title="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_alt_doc.xlf:label.confirm.delete_record.title')}"
+                    data-content="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_alt_doc.xlf:deleteWarning')}"
+                    data-bs-content="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_alt_doc.xlf:deleteWarning')}"
+                    data-button-close-text="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_alt_doc.xlf:buttons.confirm.delete_record.no')}">
+                    <core:icon identifier="actions-delete" alternativeMarkupIdentifier="inline" />
+                </button>
+            </div>
+            <div id="collapse-tab-logs{k.cycle}" class="panel-collapse {f:if(condition: '{k.isFirst}', then: 'collapse show', else: 'collapse')} search-item" role="tabpanel" aria-labelledby="heading-{filter.sourceFile}">
+                <div class="panel-body">
+                    <div class="text-end mb-2">
+                        <strong><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:logs.date" />:</strong> <f:format.date format="d.m.Y">{logs.crdate}</f:format.date>
+                    </div>
+                    <div class="diff">
+                        <f:for each="{logs.contentArray}" as="log" key="key">
+                            <div class="diff-item">
+                                <div class="diff-item-title fst-normal">{key}</div>
+                                <div class="diff-item-result"><f:for each="{log}" as="segment"><f:if condition="{segment.type} == 'del'"><f:then><del>{segment.text}</del></f:then><f:else><ins>{segment.text}</ins></f:else></f:if></f:for></div>
+                            </div>
+                        </f:for>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:if>
+</f:for>
+</html>

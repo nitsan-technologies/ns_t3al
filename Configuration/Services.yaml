@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  NITSAN\NsT3AL\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  NITSAN\NsT3AL\Controller\ModuleController:
+    tags: ['backend.controller']
+

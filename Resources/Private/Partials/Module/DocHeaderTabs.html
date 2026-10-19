@@ -1,0 +1,37 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+	<div class="module-docheader module-docheader-navigation pb-0 ns-t3al-module-docheader justify-content-end">
+		<div class="container-fluid ns-t3al-module-docheader__inner">
+			<div class="d-flex flex-wrap align-items-end justify-content-between gap-2 ns-t3al-module-docheader__row">
+				<nav class="ns-t3al-module-nav" aria-label="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:module.nav.sections')}">
+					<ul class="nav nav-pills ns-t3al-module-nav-tabs">
+						<f:for each="{moduleTabs}" as="tab">
+							<li class="nav-item">
+								<a class="nav-link{f:if(condition: '{tab.active} == 1', then: ' active')}"
+									href="{tab.href}"
+									<f:if condition="{tab.active} == 1">aria-current="page"</f:if>>
+									{tab.title}
+								</a>
+							</li>
+						</f:for>
+					</ul>
+				</nav>
+				<div class="d-flex align-items-center gap-2 ns-t3al-module-docheader__actions">
+					<button type="button"
+						class="btn btn-default ns-t3al-guide-btn"
+						data-ns-t3al-guide-open
+						data-ns-t3al-guide-url="{guideDemoUrl}"
+						data-ns-t3al-guide-title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:title.guide')}"
+						data-ns-t3al-guide-close="{f:translate(key:'modal.close', extensionName:'ns_t3al')}"
+						title="{f:translate(key:'LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:actionmenu.guide')}">
+						<core:icon identifier="actions-document-view" size="small" />
+						<span><f:translate key="LLL:EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf:actionmenu.guide" /></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

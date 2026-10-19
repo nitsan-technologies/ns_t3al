@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:ns_t3al/Resources/Private/Language/locallang_mod.xlf" date="2026-08-12T00:00:00Z" product-name="ns_t3al">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+				<source>AI Localization</source>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+				<source>AI-assisted XLIFF localization with Crowdin integration.</source>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
+				<source>Translate extensions with AI</source>
+			</trans-unit>
+			<trans-unit id="actionmenu.list" resname="actionmenu.list">
+				<source>Translate</source>
+			</trans-unit>
+			<trans-unit id="actionmenu.search" resname="actionmenu.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="actionmenu.logs" resname="actionmenu.logs">
+				<source>Logs</source>
+			</trans-unit>
+			<trans-unit id="actionmenu.guide" resname="actionmenu.guide">
+				<source>Guide</source>
+			</trans-unit>
+			<trans-unit id="module.nav.sections" resname="module.nav.sections">
+				<source>AI Localization sections</source>
+			</trans-unit>
+			<trans-unit id="toolbar.actions" resname="toolbar.actions">
+				<source>Editor actions</source>
+			</trans-unit>
+			<trans-unit id="button.translate" resname="button.translate">
+				<source>Translate</source>
+			</trans-unit>
+			<trans-unit id="button.saveLocal" resname="button.saveLocal">
+				<source>Save</source>
+			</trans-unit>
+			<trans-unit id="button.saveCrowdin" resname="button.saveCrowdin">
+				<source>Save to Crowdin</source>
+			</trans-unit>
+			<trans-unit id="button.exportCsv" resname="button.exportCsv">
+				<source>Export CSV</source>
+			</trans-unit>
+			<trans-unit id="button.exportZip" resname="button.exportZip">
+				<source>Export ZIP</source>
+			</trans-unit>
+			<trans-unit id="export.failed.title" resname="export.failed.title">
+				<source>Export ZIP failed</source>
+			</trans-unit>
+			<trans-unit id="export.failed.message" resname="export.failed.message">
+				<source>The language files could not be packed. Check that the extension has files in Resources/Private/Language; details are in the TYPO3 log.</source>
+			</trans-unit>
+			<trans-unit id="export.unavailable.title" resname="export.unavailable.title">
+				<source>Export ZIP not available</source>
+			</trans-unit>
+			<trans-unit id="export.unavailable.message" resname="export.unavailable.message">
+				<source>Export ZIP is switched off in Extension Configuration (General settings → Enable Export), or the extension is a TYPO3 system extension, for which it is not offered.</source>
+			</trans-unit>
+			<trans-unit id="button.exportZip.title" resname="button.exportZip.title">
+				<source>Download all language files of this extension as ZIP</source>
+			</trans-unit>
+			<trans-unit id="title.list" resname="title.list">
+				<source>Translate</source>
+			</trans-unit>
+			<trans-unit id="title.search" resname="title.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="title.logs" resname="title.logs">
+				<source>Translation Logs</source>
+			</trans-unit>
+			<trans-unit id="logs.pagination" resname="logs.pagination">
+				<source>Log pages</source>
+			</trans-unit>
+			<trans-unit id="logs.pagination.previous" resname="logs.pagination.previous">
+				<source>Previous</source>
+			</trans-unit>
+			<trans-unit id="logs.pagination.next" resname="logs.pagination.next">
+				<source>Next</source>
+			</trans-unit>
+			<trans-unit id="logs.pagination.status" resname="logs.pagination.status">
+				<source>Page %1$d of %2$d (%3$d logs)</source>
+			</trans-unit>
+			<trans-unit id="logs.date" resname="logs.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="title.guide" resname="title.guide">
+				<source>Localization Guide</source>
+			</trans-unit>
+			<trans-unit id="guide.open_hint" resname="guide.open_hint">
+				<source>Use the Guide button to open the interactive localization walkthrough.</source>
+			</trans-unit>
+			<trans-unit id="choose_extension" resname="choose_extension">
+				<source>Choose extension</source>
+			</trans-unit>
+			<trans-unit id="choose_file" resname="choose_file">
+				<source>Choose file</source>
+			</trans-unit>
+			<trans-unit id="choose_language" resname="choose_language">
+				<source>Choose language</source>
+			</trans-unit>
+			<trans-unit id="label.key" resname="label.key">
+				<source>Key</source>
+			</trans-unit>
+			<trans-unit id="label.default" resname="label.default">
+				<source>default</source>
+			</trans-unit>
+			<trans-unit id="label.actions" resname="label.actions">
+				<source>Actions</source>
+			</trans-unit>
+			<trans-unit id="add" resname="add">
+				<source>Add</source>
+			</trans-unit>
+			<trans-unit id="remove" resname="remove">
+				<source>Remove</source>
+			</trans-unit>
+			<trans-unit id="move" resname="move">
+				<source>Move</source>
+			</trans-unit>
+			<trans-unit id="sort_by_key" resname="sort_by_key">
+				<source>Sort by key</source>
+			</trans-unit>
+			<trans-unit id="create_file" resname="create_file">
+				<source>Create file</source>
+			</trans-unit>
+			<trans-unit id="create_file.error" resname="create_file.error">
+				<source>Could not create file</source>
+			</trans-unit>
+			<trans-unit id="create_file.illegal" resname="create_file.illegal">
+				<source>Illegal filename. Use name.xlf</source>
+			</trans-unit>
+			<trans-unit id="create_file.exists" resname="create_file.exists">
+				<source>The file already exists</source>
+			</trans-unit>
+			<trans-unit id="csv.import" resname="csv.import">
+				<source>Import CSV</source>
+			</trans-unit>
+			<trans-unit id="csv.error" resname="csv.error">
+				<source>CSV import failed</source>
+			</trans-unit>
+			<trans-unit id="csv.no_file" resname="csv.no_file">
+				<source>No file uploaded</source>
+			</trans-unit>
+			<trans-unit id="csv.invalid" resname="csv.invalid">
+				<source>Invalid file format</source>
+			</trans-unit>
+			<trans-unit id="csv.imported.title" resname="csv.imported.title">
+				<source>CSV imported</source>
+			</trans-unit>
+			<trans-unit id="csv.imported.message" resname="csv.imported.message">
+				<source>%1$d existing labels updated, %2$d new keys added. Keys that are not in the CSV are kept unchanged. Click "Save" to write the files.</source>
+			</trans-unit>
+			<trans-unit id="access.denied.title" resname="access.denied.title">
+				<source>Access denied</source>
+			</trans-unit>
+			<trans-unit id="access.denied" resname="access.denied">
+				<source>This action requires administrator privileges.</source>
+			</trans-unit>
+			<trans-unit id="access.extension_denied" resname="access.extension_denied">
+				<source>Your backend user group is not allowed to edit the language files of this extension. Ask an administrator to grant it under Access Rights → Custom module options.</source>
+			</trans-unit>
+			<trans-unit id="access.no_extensions.title" resname="access.no_extensions.title">
+				<source>No extensions available</source>
+			</trans-unit>
+			<trans-unit id="access.no_extensions" resname="access.no_extensions">
+				<source>No extension has been enabled for your backend user group yet. Ask an administrator to grant extensions under Access Rights → Custom module options → AI Localization: editable extensions.</source>
+			</trans-unit>
+			<trans-unit id="save.file_not_found.title" resname="save.file_not_found.title">
+				<source>Language file not found</source>
+			</trans-unit>
+			<trans-unit id="save.file_not_found" resname="save.file_not_found">
+				<source>The selected language file does not exist in this extension. New files can only be created by an administrator via "Create file".</source>
+			</trans-unit>
+			<trans-unit id="unsaved.title" resname="unsaved.title">
+				<source>Unsaved changes</source>
+			</trans-unit>
+			<trans-unit id="unsaved.message" resname="unsaved.message">
+				<source>The label grid has unsaved changes (edited texts, moved or deleted rows). They are lost if you leave now. Use Save to keep them.</source>
+			</trans-unit>
+			<trans-unit id="unsaved.stay" resname="unsaved.stay">
+				<source>Keep editing</source>
+			</trans-unit>
+			<trans-unit id="unsaved.discard" resname="unsaved.discard">
+				<source>Discard changes</source>
+			</trans-unit>
+			<trans-unit id="row.delete.title" resname="row.delete.title">
+				<source>Delete label</source>
+			</trans-unit>
+			<trans-unit id="row.delete.message" resname="row.delete.message">
+				<source>Delete the label "%s" with all its translations? The file changes only when you save.</source>
+			</trans-unit>
+			<trans-unit id="row.delete.confirm" resname="row.delete.confirm">
+				<source>Delete</source>
+			</trans-unit>
+			<trans-unit id="row.delete.cancel" resname="row.delete.cancel">
+				<source>Cancel</source>
+			</trans-unit>
+			<trans-unit id="save.no_changes.title" resname="save.no_changes.title">
+				<source>No changes</source>
+			</trans-unit>
+			<trans-unit id="save.no_changes" resname="save.no_changes">
+				<source>Nothing was changed, so no language file was modified.</source>
+			</trans-unit>
+			<trans-unit id="save.source_read_only.title" resname="save.source_read_only.title">
+				<source>Source file is read-only</source>
+			</trans-unit>
+			<trans-unit id="save.key_error.title" resname="save.key_error.title">
+				<source>Label keys need attention</source>
+			</trans-unit>
+			<trans-unit id="save.duplicate_keys.message" resname="save.duplicate_keys.message">
+				<source>These keys would exist more than once: %s. Nothing was saved or translated; rename or remove the duplicate rows and try again.</source>
+			</trans-unit>
+			<trans-unit id="save.invalid_keys.message" resname="save.invalid_keys.message">
+				<source>Invalid keys: %s. Use only letters, digits, "_", "." and "-". Nothing was saved or translated.</source>
+			</trans-unit>
+			<trans-unit id="save.source_read_only" resname="save.source_read_only">
+				<source>This is a TYPO3 system extension: its English source file belongs to the TYPO3 Core and is never modified. Changes to keys or English texts were ignored; only translations are saved (to the language pack folder).</source>
+			</trans-unit>
+			<trans-unit id="create_file.source_read_only" resname="create_file.source_read_only">
+				<source>Language files cannot be created inside TYPO3 system extensions (TYPO3 Core).</source>
+			</trans-unit>
+			<trans-unit id="permission.extensions.header" resname="permission.extensions.header">
+				<source>AI Localization: editable extensions</source>
+			</trans-unit>
+			<trans-unit id="permission.extensions.item.description" resname="permission.extensions.item.description">
+				<source>Allows non-admin users of this group to translate and save the language files of this extension in the AI Localization module.</source>
+			</trans-unit>
+			<trans-unit id="search_text" resname="search_text">
+				<source>Search text</source>
+			</trans-unit>
+			<trans-unit id="search_all" resname="search_all">
+				<source>Search all</source>
+			</trans-unit>
+			<trans-unit id="search_results" resname="search_results">
+				<source>Search results</source>
+			</trans-unit>
+			<trans-unit id="search_results_none" resname="search_results_none">
+				<source>No results</source>
+			</trans-unit>
+			<trans-unit id="search_language" resname="search_language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="search_language_all" resname="search_language_all">
+				<source>All languages</source>
+			</trans-unit>
+			<trans-unit id="search_language_default" resname="search_language_default">
+				<source>English (source)</source>
+			</trans-unit>
+			<trans-unit id="search_results_limited" resname="search_results_limited">
+				<source>Only the first %d matching files are shown. Refine the search text or pick a language.</source>
+			</trans-unit>
+			<trans-unit id="button.reload" resname="button.reload">
+				<source>Reload</source>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.title" resname="concurrent_edit.title">
+				<source>Warning</source>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.someone" resname="concurrent_edit.someone">
+				<source>Someone else</source>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.lessThanMinute" resname="concurrent_edit.message.lessThanMinute">
+				<source>%1$s started editing the file %2$s less than a minute ago.</source>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.oneMinute" resname="concurrent_edit.message.oneMinute">
+				<source>%1$s started editing the file %2$s 1 minute ago.</source>
+			</trans-unit>
+			<trans-unit id="concurrent_edit.message.minutes" resname="concurrent_edit.message.minutes">
+				<source>%1$s started editing the file %2$s %3$d minutes ago.</source>
+			</trans-unit>
+			<trans-unit id="max_input_vars.title" resname="max_input_vars.title">
+				<source>Too many labels</source>
+			</trans-unit>
+			<trans-unit id="max_input_vars.message" resname="max_input_vars.message">
+				<source>Too many labels, max_input_vars too small. Set max_input_vars to at least: %s</source>
+			</trans-unit>
+			<trans-unit id="toolbar.crowdinId" resname="toolbar.crowdinId">
+				<source>Crowdin project ID</source>
+			</trans-unit>
+			<trans-unit id="filter.label" resname="filter.label">
+				<source>Extension type</source>
+			</trans-unit>
+			<trans-unit id="filter.all" resname="filter.all">
+				<source>All</source>
+			</trans-unit>
+			<trans-unit id="filter.system" resname="filter.system">
+				<source>System</source>
+			</trans-unit>
+			<trans-unit id="filter.local" resname="filter.local">
+				<source>Local</source>
+			</trans-unit>
+			<trans-unit id="title.list.intro" resname="title.list.intro">
+				<source>Edit extension language files side by side, fill missing translations with AI and save them.</source>
+			</trans-unit>
+			<trans-unit id="title.search.intro" resname="title.search.intro">
+				<source>Find a label text in the language files of all extensions.</source>
+			</trans-unit>
+			<trans-unit id="title.logs.intro" resname="title.logs.intro">
+				<source>Review every saved change to a language file, with a diff per label.</source>
+			</trans-unit>
+			<trans-unit id="field.extension" resname="field.extension">
+				<source>Extension</source>
+			</trans-unit>
+			<trans-unit id="field.file" resname="field.file">
+				<source>Language file</source>
+			</trans-unit>
+			<trans-unit id="field.newFile" resname="field.newFile">
+				<source>New language file</source>
+			</trans-unit>
+			<trans-unit id="field.languages" resname="field.languages">
+				<source>Target languages</source>
+			</trans-unit>
+			<trans-unit id="field.searchText" resname="field.searchText">
+				<source>Label text</source>
+			</trans-unit>
+			<trans-unit id="toolbar.provider" resname="toolbar.provider">
+				<source>AI provider</source>
+			</trans-unit>
+			<trans-unit id="footer.developedBy" resname="footer.developedBy">
+				<source>Developed by</source>
+			</trans-unit>
+			<trans-unit id="footer.about" resname="footer.about">
+				<source>About</source>
+			</trans-unit>
+			<trans-unit id="footer.support" resname="footer.support">
+				<source>Support</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

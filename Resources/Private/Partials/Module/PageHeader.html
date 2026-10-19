@@ -1,0 +1,18 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<div class="ns-t3al-page-header">
+	<div class="ns-t3al-page-header__main">
+		<h1>{heading}</h1>
+		<f:if condition="{intro}">
+			<p class="text-variant">{intro}</p>
+		</f:if>
+	</div>
+	<f:if condition="{badge}">
+		<div class="ns-t3al-page-header__aside">
+			<span class="badge badge-primary ns-t3al-page-header__badge">{badge}</span>
+		</div>
+	</f:if>
+</div>
+</html>
