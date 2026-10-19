@@ -13,7 +13,7 @@ Versioning
 ==========
 
 The version number uses the format ``major.minor.patch``, for example
-``1.0.0``. Check the :ref:`changelog` for what changed in each version.
+``1.0.0``. Check the :ref:`release-notes` for what changed in each version.
 
 Before updating
 ===============
@@ -21,7 +21,7 @@ Before updating
 *  Back up your database and files.
 *  Back up the language files you edited with the module, if they are not
    under version control.
-*  Read the :ref:`changelog` of all versions since your current version.
+*  Read the :ref:`release-notes` of all versions since your current version.
 *  If possible, test the update on a staging system first.
 
 Update

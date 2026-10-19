@@ -185,7 +185,7 @@ Help
    Crowdin/Index
    Troubleshooting/Index
    Updating/Index
-   ChangeLog/Index
+   ReleaseNotes/Index
    HelpfulLinks/Index
    Support/Index
 
