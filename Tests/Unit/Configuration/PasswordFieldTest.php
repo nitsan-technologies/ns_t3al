@@ -38,7 +38,9 @@ final class PasswordFieldTest extends UnitTestCase
     private function createField(?string $stored): PasswordField
     {
         return new class ($stored) extends PasswordField {
-            public function __construct(private readonly ?string $stored) {}
+            public function __construct(private readonly ?string $stored)
+            {
+            }
 
             protected function storedValue(string $name): ?string
             {

@@ -3,6 +3,9 @@
 /composer.lock
 /var/
 /.composer/
+# Build/Scripts/runTests.sh
+.cache
+/composer.json.testing
 .php-cs-fixer.cache
 .DS_Store
 .idea/

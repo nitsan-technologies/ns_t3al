@@ -79,7 +79,7 @@ Symlinks: run `.agents/scripts/link-skills.sh` after adding skills.
 ```bash
 # Extension root
 composer install && composer test
-composer ci          # test + PHPStan + php-cs-fixer dry run (= GitLab pipeline, tasks/run-quality.md)
+composer ci          # test + PHPStan + php-cs-fixer dry run (GitHub Actions core12/13/14, tasks/run-quality.md)
 
 # TYPO3 root (DDEV, classic mode)
 ddev exec php typo3/sysext/core/bin/typo3 cache:flush

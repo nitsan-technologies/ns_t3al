@@ -74,7 +74,7 @@
         "cs:fix": "Apply PHP-CS-Fixer fixes",
         "stan": "Run PHPStan static analysis (phpstan.neon)",
         "test": "Run unit tests (Build/phpunit/UnitTests.xml)",
-        "ci": "Run what the GitLab pipeline runs: unit tests, PHPStan, coding standards"
+        "ci": "Run what the GitHub Actions CI runs: unit tests, PHPStan, coding standards"
     },
     "extra": {
         "typo3/cms": {

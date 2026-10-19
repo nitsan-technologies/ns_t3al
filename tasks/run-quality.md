@@ -14,18 +14,27 @@ composer ci                 # test + stan + cs:check — what the pipeline runs
 
 Follow the TYPO3 CGL as well (`declare(strict_types=1)`, typed properties, constructor DI via `Services.yaml`).
 
-## GitLab pipeline (`.gitlab-ci.yml`)
+## GitHub Actions (`.github/workflows/`)
 
-Same layout as `ns_t3aa` (image `himanshuramavat/php-ci:<php>-v1.5.0`, one `ci` stage, jobs run on web-triggered pipelines or when PHP / build files change):
+Same layout as `ns_t3af`: one workflow per TYPO3 major, every step through the Docker test runner `Build/Scripts/runTests.sh` (`ghcr.io/typo3/core-testing-php*` images).
 
-| Job | Runs |
+| Workflow | Runs |
 |---|---|
-| `tests` | unit tests — TYPO3 ^12.4 on PHP 8.1–8.4, ^13.4 and ^14.3 on PHP 8.2–8.4 (10 jobs) |
-| `lint` | `php -l` on PHP 8.1 and 8.4 |
-| `cs` | `php-cs-fixer fix --dry-run --diff` (installed globally, no TYPO3 install) |
-| `stan` | `composer stan` once per TYPO3 major (^12.4 / PHP 8.1, ^13.4, ^14.3 / PHP 8.2) — the code branches on classes that exist in only some majors |
+| `core12.yml`, `core13.yml`, `core14.yml` | per PHP 8.2 / 8.3 / 8.4 / 8.5: `composerInstallHighest`, `lint`, `unit`; on PHP 8.3 also `cgl -n` (php-cs-fixer dry run) and `composer -- stan` (PHPStan per major — the code branches on classes that exist in only some majors) |
+| `documentation.yml` | renders `Documentation/` with `render-guides --minimal-test` |
+| `ter-release.yml` | on a git tag: publishes to TER with `tailor` (needs repo secrets `REPOSITORY_URL`, `TYPO3_EXTENSION_KEY`, `TYPO3_API_TOKEN`, `TYPO3_API_USERNAME`, `TYPO3_API_PASSWORD`) |
 
-Each job pins the TYPO3 packages from `composer.json` `require` to its `TYPO3_VERSION` before `composer update`; keep that list in sync when a `typo3/cms-*` requirement is added. No PHP 8.5 CI image exists yet; run 8.5 locally (lint, unit tests and PHPStan in Docker) as in `tasks/version-matrix.md`.
+`runTests.sh` pins the `typo3/cms-*` packages from `composer.json` `require` to the `-t` major (`TYPO3_CONSTRAINT`) before `composer update`; keep that list in sync when a `typo3/cms-*` requirement is added.
+
+Same checks locally (Docker or Podman):
+
+```bash
+Build/Scripts/runTests.sh -t 12 -p 8.2 -s composerInstallHighest
+Build/Scripts/runTests.sh -t 12 -p 8.2 -s unit
+Build/Scripts/runTests.sh -t 12 -p 8.2 -s lint
+Build/Scripts/runTests.sh -t 12 -p 8.2 -s cgl -n
+Build/Scripts/runTests.sh -t 12 -p 8.2 -s composer -- stan
+```
 
 Static smoke (also in `context/manual-testing.md` → Quick automated smoke):
 

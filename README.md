@@ -1,3 +1,13 @@
+[![Latest Stable Version](https://img.shields.io/badge/Stable-1.0.0-success)](https://extensions.typo3.org/extension/ns_t3al)
+[![AI-Powered XLIFF Translation Github](https://img.shields.io/badge/ns__t3al-informational?logo=github)](https://github.com/nitsan-technologies/ns_t3al)
+[![TYPO3 14](https://img.shields.io/badge/TYPO3-14-important.svg?logo=typo3)](https://get.typo3.org/version/14)
+[![TYPO3 13](https://img.shields.io/badge/TYPO3-13-important.svg?logo=typo3)](https://get.typo3.org/version/13)
+[![TYPO3 12](https://img.shields.io/badge/TYPO3-12-important.svg?logo=typo3)](https://get.typo3.org/version/12)
+[![PHP](https://img.shields.io/badge/PHP-8.2%20to%208.5-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![core 12](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core12.yml/badge.svg)](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core12.yml)
+[![core 13](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core13.yml/badge.svg)](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core13.yml)
+[![core 14](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core14.yml/badge.svg)](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core14.yml)
+
 # AI-Powered XLIFF Translation (`ns_t3al`)
 
 TYPO3 backend module (**Admin Tools → AI Localization**) for translating extension XLIFF files
@@ -10,7 +20,13 @@ TYPO3 backend module (**Admin Tools → AI Localization**) for translating exten
 - search labels across extensions;
 - translation logs with a diff of every saved change.
 
-Product page, documentation and support: <https://t3planet.de/t3al-typo3-erweiterung>
+|                       | URL                                                                 |
+|-----------------------|---------------------------------------------------------------------|
+| **Repository:**       | https://github.com/nitsan-technologies/ns_t3al                      |
+| **Issues:**           | https://github.com/nitsan-technologies/ns_t3al/issues               |
+| **Product Page:**     | https://t3planet.de/t3al-typo3-erweiterung                          |
+| **Support:**          | https://t3planet.de/support                                         |
+| **License:**          | [LICENSE](LICENSE) (GPL-2.0-or-later)                               |
 
 ## Requirements
 
@@ -51,7 +67,16 @@ Non-admin editors need access to the module and the extensions they may edit:
 ```bash
 composer install
 composer test   # unit tests (Build/phpunit/UnitTests.xml)
-composer ci     # unit tests + PHPStan + coding standards, as in the GitLab pipeline (.gitlab-ci.yml)
+composer ci     # unit tests + PHPStan + coding standards
+```
+
+GitHub Actions (`.github/workflows/core12.yml`, `core13.yml`, `core14.yml`) run the same checks per TYPO3 major
+through the Docker test runner, which you can also use locally:
+
+```bash
+Build/Scripts/runTests.sh -t 13 -p 8.3 -s composerInstallHighest
+Build/Scripts/runTests.sh -t 13 -p 8.3 -s unit
+Build/Scripts/runTests.sh -h    # all suites and options
 ```
 
 Architecture notes for contributors: `AGENTS.md` and `context/` (git repository only; like `Build/` and
