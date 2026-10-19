@@ -85,3 +85,4 @@ Architecture notes for contributors: `AGENTS.md` and `context/` (git repository 
 ## License
 
 GPL-2.0-or-later
+
