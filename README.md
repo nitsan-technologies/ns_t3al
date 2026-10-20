@@ -1,5 +1,5 @@
 [![Latest Stable Version](https://img.shields.io/badge/Stable-1.0.0-success)](https://extensions.typo3.org/extension/ns_t3al)
-[![AI-Powered XLIFF Translation Github](https://img.shields.io/badge/ns__t3al-informational?logo=github)](https://github.com/nitsan-technologies/ns_t3al)
+[![AI-Powered XLIFF Translation Github](https://img.shields.io/badge/AI--Localization-informational?logo=github)](https://github.com/nitsan-technologies/ns_t3al)
 [![TYPO3 14](https://img.shields.io/badge/TYPO3-14-important.svg?logo=typo3)](https://get.typo3.org/version/14)
 [![TYPO3 13](https://img.shields.io/badge/TYPO3-13-important.svg?logo=typo3)](https://get.typo3.org/version/13)
 [![TYPO3 12](https://img.shields.io/badge/TYPO3-12-important.svg?logo=typo3)](https://get.typo3.org/version/12)
@@ -8,7 +8,9 @@
 [![core 13](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core13.yml/badge.svg)](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core13.yml)
 [![core 14](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core14.yml/badge.svg)](https://github.com/nitsan-technologies/ns_t3al/actions/workflows/core14.yml)
 
-# AI-Powered XLIFF Translation (`ns_t3al`)
+# AI-Powered XLIFF Translation for TYPO3 Extension `ns_t3al`
+
+[![AI-Powered XLIFF Translation for TYPO3](Resources/Public/Images/Readme/readme.jpg)](https://t3planet.de/t3al-typo3-erweiterung)
 
 TYPO3 backend module (**Admin Tools → AI Localization**) for translating extension XLIFF files
 (`Resources/Private/Language/*.xlf`) in a spreadsheet-style grid:
