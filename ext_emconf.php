@@ -2,7 +2,7 @@
 
 $EM_CONF['ns_t3al'] = [
     'title' => 'AI-Powered XLIFF Translation',
-    'description' => 'Translate TYPO3 extension XLIFF files with AI and publish them to Crowdin from the TYPO3 backend.',
+    'description' => 'AI translation for TYPO3 extension language files. Translate XLIFF / locallang.xlf labels with AI right in the TYPO3 backend - no more copying labels into external tools. Auto-translate missing labels with DeepL, OpenAI ChatGPT, Google Gemini or Google Translate, review and edit them in a side-by-side editor grid, and save only what changed. Built for the whole TYPO3 team: integrators and developers localize extensions, editors fix wording, and admins control access per extension. Includes label search, CSV import/export, ZIP export, translation logs with diff, and Crowdin upload for TYPO3 core translations. Multilingual TYPO3 made simple. Free and open source, no licence key.',
     'category' => 'be',
     'author' => 'Team T3Planet',
     'author_email' => 'support@t3planet.de',
